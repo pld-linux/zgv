@@ -20,15 +20,15 @@ Patch1:		%{name}-info.patch
 Patch2:		%{name}-Dkey.patch
 BuildRequires:	gawk
 BuildRequires:	libjpeg-devel
-BuildRequires:	libtiff-devel
 BuildRequires:	libpng >= 1.0.8
+BuildRequires:	libtiff-devel
 BuildRequires:	svgalib-devel
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
 %{?_with_pcd:BuildRequires: libpcd-devel}
 Requires:	/usr/X11R6/lib/X11/rgb.txt
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Exclusivearch:	%{ix86} alpha
+ExclusiveArch:	%{ix86} alpha
 
 %description
 Zgv is a picture viewer capable of displaying GIF files as defined by
@@ -107,8 +107,7 @@ mv -f config.mk.new config.mk
 %endif
 
 %build
-%{__make} all OPTFLAGS="%{rpmcflags}" \
-	INCDIRS="-I%{_includedir}" \
+%{__make} all OPTFLAGS="%{rpmcflags} `pkg-config --cflags libpng12 2>/dev/null`" \
 	RGB_DB="%{_prefix}/X11R6/lib/X11/rgb.txt"
 
 %{__make} info

@@ -5,13 +5,14 @@ Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
 Version:	3.2
-Release:	3
+Release:	4
 Copyright:	GPL
 Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
 Source:		ftp://sunsite.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
 Patch0:		zgv-DESTDIR.patch
 Patch1:		zgv-info.patch
+Patch2:		zgv-overflow.patch
 BuildPrereq:	svgalib-devel
 BuildPrereq:	libjpeg-devel
 BuildPrereq:	libpng-devel
@@ -57,6 +58,7 @@ yeni PNG formatlarýndaki resimleri görüntüleyebilmektedir.
 %setup  -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 
@@ -99,7 +101,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_infodir}/*
 
 %changelog
-* Thu May 20 1999 Piotr Czerwiñski <pius@pld.org.pl> 
+* Mon May 31 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [3.2-4]
+- fixed overflow security bug in zgv (patch by <elephant@szczecin.top.pl>).
+
+* Thu May 20 1999 Piotr Czerwiñski <pius@pld.org.pl>
   [3.2-3]
 - package is FHS 2.0 compliant,
 - spec file based on RH version; rewritten for PLD use by me, 

@@ -1,0 +1,14 @@
+diff -Nru zgv-5.7.orig/src/rcfile.c zgv-5.7/src/rcfile.c
+--- zgv-5.7.orig/src/rcfile.c	2003-06-30 15:41:43.000000000 +0200
++++ zgv-5.7/src/rcfile.c	2003-11-09 15:15:39.000000000 +0100
+@@ -267,7 +267,9 @@
+ static char cfgfile[1024];
+ FILE *in;
+ int got_rcfile=0;
+-char *home=getenv("HOME");
++char *home=getenv("HOME_ETC");
++
++if (!home) home=getenv("HOME");
+ 
+ defaultcfg();
+ 

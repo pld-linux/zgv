@@ -4,14 +4,13 @@ Summary(fr):	Visualiseur d'image en mode console, pour de nombreux formats graph
 Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
-Version:	3.0
-Release:	6
+Version:	3.2
+Release:	1
 Copyright:	GPL
 Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
-Source:		ftp://sunsite.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}-src.tar.gz
-Patch0:		zgv-3.0-redhat.patch
-Patch1:		zgv2.7-glibc.patch
+Source:		ftp://sunsite.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
+Patch0:		zgv-makefile.patch
 BuildRoot:	/tmp/%{name}-%{version}-root
 Exclusivearch:	i386 alpha
 
@@ -50,22 +49,32 @@ belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa (TGA) ve
 yeni PNG formatlarýndaki resimleri görüntüleyebilmektedir.
 
 %prep
-%setup -n zgv-3.0-src -q
-%patch0 -p1 -b .config
-%patch1 -p1 -b .glibc
+%setup -q
+%patch0 -p1
 
 %build
-make CFLAGS="$RPM_OPT_FLAGS"
+
+make all OPTFLAGS="$RPM_OPT_FLAGS" \
+	INCDIRS="-I/usr/include" \
+	RGB_DB="/usr/X11R6/lib/X11/rgb.txt"
+
+make info
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT/usr/{bin,man/man1}
-install -s zgv $RPM_BUILD_ROOT/usr/bin
-install zgv.1 $RPM_BUILD_ROOT/usr/man/man1
+make PREFIX="$RPM_BUILD_ROOT/usr" install
 
-gzip -9nf README README.fonts ChangeLog doc/NEWS doc/sample.zgvrc \
-	$RPM_BUILD_ROOT/usr/man/man1/*
+gzip -9nf TODO README README.fonts ChangeLog NEWS doc/sample.zgvrc \
+	$RPM_BUILD_ROOT/usr/{info/zgv*,man/man1/*}
+
+%post
+/sbin/install-info /usr/info/zgv.gz /etc/info-dir
+
+%preun
+if [ $1 = 0 ]; then
+        /sbin/install-info --delete /usr/info/zgv.gz /etc/info-dir
+fi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -73,11 +82,23 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.gz README.fonts.gz ChangeLog.gz 
-%doc doc/NEWS.gz doc/sample.zgvrc.gz
+%doc TODO.gz NEWS.gz doc/sample.zgvrc.gz
 %attr(4511, root, root) /usr/bin/zgv
 /usr/man/man1/zgv.1.*
+/usr/info/zgv*
 
 %changelog
+* Sat Mar 27 1999 Piotr Czerwiñski <pius@pld.org.pl>
+  [3.2-1]
+- updated to 3.2,
+- removed zgv-3.0-redhat.patch and zgv2.7-glibc.patch,
+- added zgv-makefile.patch (fixed passing $RPM_OPT_FLAGS, changed install
+  procedure to allow building from non-root account),
+- rewritten %build,
+- simplifications in %install,
+- added info files,
+- added %post and %preun.
+
 * Wed Mar 24 1999 Piotr Czerwiñski <pius@pld.org.pl>
 - changed BuildRoot to /tmp/%%{name}-%%{version}-root,
 - added Group(pl),

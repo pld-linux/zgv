@@ -10,7 +10,7 @@ Copyright:	GPL
 Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
 Source:		ftp://sunsite.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
-Patch0:		zgv-makefile.patch
+Patch0:		zgv-DESTDIR.patch
 Patch1:		zgv-info.patch
 BuildPrereq:	svgalib-devel
 BuildPrereq:	libjpeg-devel
@@ -61,7 +61,7 @@ yeni PNG formatlarýndaki resimleri görüntüleyebilmektedir.
 %build
 
 make all OPTFLAGS="$RPM_OPT_FLAGS" \
-	INCDIRS="-I%{_includedir}" \
+	INCDIRS="-I/usr/include" \
 	RGB_DB="/usr/X11R6/lib/X11/rgb.txt"
 
 make info
@@ -69,10 +69,14 @@ make info
 %install
 rm -rf $RPM_BUILD_ROOT
 
-make PREFIX="$RPM_BUILD_ROOT/usr" install
+make DESTDIR=$RPM_BUILD_ROOT \
+	BINDIR=%{_bindir} \
+	MANDIR=%{_mandir}/man1 \
+	INFODIR=%{_infodir} \
+	install
 
 gzip -9nf TODO README README.fonts ChangeLog NEWS doc/sample.zgvrc \
-	$RPM_BUILD_ROOT/usr/{share/info/zgv*,share/man/man1/*}
+	$RPM_BUILD_ROOT{%{_infodir}/zgv*,%{_mandir}/man1/*}
 
 %post
 /sbin/install-info %{_infodir}/zgv.gz /etc/info-dir

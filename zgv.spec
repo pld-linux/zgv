@@ -89,7 +89,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc {README,README.fonts,ChangeLog,TODO,NEWS,doc/sample.zgvrc}.gz
 
-%attr(4511,root,root) /usr/bin/zgv
+%attr(4511,root,root) %{_bindir}/zgv
 
 %{_mandir}/man1/zgv.1.*
 %{_infodir}/zgv*

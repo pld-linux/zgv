@@ -95,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc {README,README.fonts,ChangeLog,TODO,NEWS,doc/sample.zgvrc}.gz
 
-%attr(4511,root,root) %{_bindir}/%{name}
+%attr(0511,root,root) %{_bindir}/%{name}
 
 %{_mandir}/man1/*
 %{_infodir}/*

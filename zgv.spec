@@ -9,7 +9,7 @@ Summary(pt_BR):	Visualizador para muitos formatos de gráficos (console)
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
 Version:	5.5
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik
@@ -17,6 +17,7 @@ Group(pl):	Aplikacje/Grafika
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
+Patch2:		%{name}-Dkey.patch
 BuildRequires:	gawk
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
@@ -84,6 +85,7 @@ belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa
 %setup  -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %if %{?_with_pcd:1}%{!?_with_pcd:0}
 sed -e 's@#\(PCDDEF=.*\)@\1@' config.mk > config.mk.new

@@ -1,12 +1,6 @@
 diff -Nru zgv-5.2/config.mk zgv-5.2.new/config.mk
 --- zgv-5.2/config.mk	Sat Nov  4 15:55:35 2000
 +++ zgv-5.2.new/config.mk	Sat Nov  4 15:54:39 2000
-@@ -1,4 +1,4 @@
--# This file configures zgv's Makefiles. You should edit the settings
-+# tHIS FIle configures zgv's Makefiles. You should edit the settings
- # below as needed.
- 
- # If you want to tune the optimisation used (you shouldn't need to,
 @@ -34,7 +34,7 @@
  #
  # If you don't know what to do, leave it as-is.
@@ -55,7 +49,7 @@ diff -Nru zgv-5.2/src/Makefile zgv-5.2.new/src/Makefile
  install: all
 -	install -m 4511 -o root -g root -s zgv $(BINDIR)
 +	mkdir -p $(DESTDIR)$(BINDIR)
-+	install -s zgv $(DESTDIR)$(BINDIR)
++	install zgv $(DESTDIR)$(BINDIR)
  
  uninstall:
  	$(RM) $(BINDIR)/zgv

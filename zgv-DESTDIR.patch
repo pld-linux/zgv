@@ -1,0 +1,58 @@
+--- zgv-3.2/config.mk	Mon Mar 15 15:06:42 1999
++++ zgv-3.2.new/config.mk	Tue May 18 10:01:49 1999
+@@ -26,7 +26,7 @@
+ # example, perhaps your distribution automatically handles this for
+ # you) you should uncomment this to prevent `make install' doing that.
+ #
+-#INFO_DIR_UPDATE=no
++INFO_DIR_UPDATE=no
+ 
+ 
+ # ------------------ Library-related options ----------------------
+--- zgv-3.2/doc/Makefile	Mon Mar 15 15:08:35 1999
++++ zgv-3.2.new/doc/Makefile	Tue May 18 10:01:14 1999
+@@ -34,8 +34,10 @@
+ else
+ install: ../src/install-info
+ endif
+-	install -m 444 zgv.1 $(MANDIR)
+-	install -m 444 zgv zgv-? $(INFODIR)
++	mkdir -p $(DESTDIR)$(MANDIR)
++	mkdir -p $(DESTDIR)$(INFODIR)
++	install zgv.1 $(DESTDIR)$(MANDIR)
++	install zgv zgv-? $(DESTDIR)$(INFODIR)
+ # Update info `dir' file.
+ # Info always uses a dir file in preference to a dir.gz, so we don't use
+ # dir.gz unless it's the only game in town.
+--- zgv-3.2/src/Makefile	Mon Mar 15 15:08:59 1999
++++ zgv-3.2.new/src/Makefile	Tue May 18 09:59:45 1999
+@@ -15,14 +15,14 @@
+ CC=gcc
+ 
+ WARNOPTS = -Wall
++OPTFLAGS = -O2 -fomit-frame-pointer -finline-functions
+ 
+-CFLAGS = $(INCDIRS) $(WARNOPTS) $(PNGDEF) \
+-	-DRGB_DB_FILE=\"$(RGB_DB)\" \
+-	-O2 -fomit-frame-pointer -finline-functions
++CFLAGS = $(INCDIRS) $(WARNOPTS) $(PNGDEF) $(OPTFLAGS) \
++	-DRGB_DB_FILE=\"$(RGB_DB)\" 
+ 
+-ZGV_LIBS = -lvgagl -lvga $(JPEGDIR)/libjpeg.a
++ZGV_LIBS = -lvgagl -lvga -ljpeg
+ ifeq ($(PNGDEF),-DPNG_SUPPORT)
+-ZGV_LIBS += $(PNGLIBDIR)/libpng.a $(ZLIBDIR)/libz.a -lm
++ZGV_LIBS += -lpng -lz -lm
+ endif
+ 
+ 
+@@ -54,7 +54,8 @@
+ 	$(CC) $(INFODIRDEF) -o install-info install-info.c
+ 
+ install: all
+-	install -m 4511 -o root -g root -s zgv $(BINDIR)
++	mkdir -p $(DESTDIR)$(BINDIR)
++	install -s zgv $(DESTDIR)$(BINDIR)
+ 
+ clean:
+ 	$(RM) *.o *~ zgv munglogo zgvlogo.h bdf2h fontbmps.h install-info

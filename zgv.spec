@@ -5,7 +5,7 @@ Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
 Version:	3.2
-Release:	1
+Release:	2
 Copyright:	GPL
 Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
@@ -50,7 +50,7 @@ belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa (TGA) ve
 yeni PNG formatlarýndaki resimleri görüntüleyebilmektedir.
 
 %prep
-%setup -q
+%setup  -q
 %patch0 -p1
 %patch1 -p1
 
@@ -83,13 +83,19 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.gz README.fonts.gz ChangeLog.gz 
-%doc TODO.gz NEWS.gz doc/sample.zgvrc.gz
-%attr(4511, root, root) /usr/bin/zgv
+%doc {README,README.fonts,ChangeLog,TODO,NEWS,doc/sample.zgvrc}.gz
+
+%attr(4511,root,root) /usr/bin/zgv
+
 /usr/man/man1/zgv.1.*
 /usr/info/zgv*
 
 %changelog
+* Wed Apr 21 1999 Piotr Czerwiñski <pius@pld.org.pl>
+  [3.2-2]
+- recompiled on rpm3,
+- cosmetic changes.
+
 * Sat Mar 27 1999 Piotr Czerwiñski <pius@pld.org.pl>
   [3.2-1]
 - updated to 3.2,

@@ -50,7 +50,7 @@ belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa (TGA) ve
 yeni PNG formatlarýndaki resimleri görüntüleyebilmektedir.
 
 %prep
-%setup -q
+%setup  -q
 %patch0 -p1
 %patch1 -p1
 
@@ -85,7 +85,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.gz README.fonts.gz ChangeLog.gz 
 %doc TODO.gz NEWS.gz doc/sample.zgvrc.gz
-%attr(4511, root, root) /usr/bin/zgv
+
+%attr(4511,root,root) /usr/bin/zgv
+
 /usr/man/man1/zgv.1.*
 /usr/info/zgv*
 

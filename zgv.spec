@@ -10,8 +10,8 @@ Summary(uk):	Консольна програма перегляду багатьох граф╕чних формат╕в
 Summary(tr):	BirГok resim formatЩnЩ gЖrЭntЭleyebilen konsol aracЩ
 Summary(ru):	Консольная программа просмотра множества графических форматов
 Name:		zgv
-Version:	5.5
-Release:	3
+Version:	5.6
+Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz

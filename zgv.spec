@@ -5,7 +5,7 @@ Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
 Version:	5.1
-Release:	1
+Release: 2
 License:	GPL
 Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
@@ -14,7 +14,7 @@ Patch0:		zgv-DESTDIR.patch
 Patch1:		zgv-info.patch
 BuildRequires:	svgalib-devel
 BuildRequires:	libjpeg-devel
-BuildRequires:	libpng-devel
+BuildRequires:	libpng >= 1.0.8
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Exclusivearch:	%{ix86} alpha

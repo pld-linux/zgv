@@ -1,0 +1,103 @@
+Summary:	console viewer for many graphics formats
+Summary(de):	Konsolenbetrachter für viele Grafikformate
+Summary(fr):	Visualiseur d'image en mode console, pour de nombreux formats graphiques.
+Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
+Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
+Name:		zgv
+Version:	3.0
+Release:	3
+Copyright:	GPL
+Group:		Applications/Graphics
+Source:		ftp://sunsite.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}-src.tar.gz
+Patch0:		zgv-3.0-redhat.patch
+Patch1:		zgv2.7-glibc.patch
+BuildRoot:	/var/tmp/%{name}-%{version}-root
+Exclusivearch:	i386 alpha
+
+%description
+Zgv is a picture viewer capable of displaying GIF files as defined by
+CompuServe, with the exceptions listed in the RESTRICTIONS section. It
+is also capable of displaying JPEG/JFIF files using the Independant
+JPEG Group's JPEG software, PBM/PGM/PPM files as used by pbmplus and
+netpbm, Microsoft Windows and OS/2 BMP files, Targa (TGA) files, and
+the new PNG format.
+
+%description -l de
+zgv ist ein Bild-Viewer, der GIF-Dateien nach der CompuServe-Definition 
+anzeigen kann, abgesehen von den Ausnahmen im Teil RESTRICTIONS. Ferner 
+kann er JPEG/JFIF-Dateien unter Verwendung der JPEG-Software der 
+unabhängigen JPEG-Group, PBM/PGM/PPM-Dateien wie sie pbmplus und netpbm 
+benutzen, sowie Microsoft Windows und OS/2 BMB-Dateien, Targa (TGA) und 
+das neue PNG-Format anzeigen.
+
+%description -l fr
+Zgv est un visualisateur de fichiers GIF tels que ceux qui sont définis
+par CompuServe, avec les exceptions listées dans la section RESTRICTIONS.
+Il peut aussi afficher les fichiers JPEG/JTIF utilisés par le logiciel
+JPEG de l'Independant JPEG Group, les fichiers PBM/PGM/PPM utilisés par
+pbmplus et netpbm, les fichiers BMP de Microsoft Windows et OS/2,
+les fichiers Targa (TGA) et le nouveau format PNG.
+
+%description -l pl
+Zgv potrafi wy¶wietlaæ obrazki w formacie CompuServe GIF (z wyj±tkami
+opisanymi w rozdziale RESTRICTIONS), JPEG/JFIF, PBM/PGM/PPM, BMP
+(z Microsoft Windows i OS/2), Targa (TGA) i PNG.
+
+%description -l tr
+Zgv, konsol ortamýndan CompuServe'in GIF formatý (RESTRICTIONS ile
+belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa (TGA) ve
+yeni PNG formatlarýndaki resimleri görüntüleyebilmektedir.
+
+%prep
+%setup -n zgv-%{version}-src -q
+%patch0 -p1 -b .config
+%patch1 -p1 -b .glibc
+
+%build
+make CFLAGS="$RPM_OPT_FLAGS"
+
+%install
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/usr/{bin,man/man1}
+
+install -s zgv $RPM_BUILD_ROOT/usr/bin
+install zgv.1 $RPM_BUILD_ROOT/usr/man/man1
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%attr(4511, root, root) /usr/bin/zgv
+%doc %attr(644, root, man) /usr/man/man1/zgv.1
+
+%changelog
+* Thu Sep 24  1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [3.0-6]
+- added aplha to Exclusivearch list.
+
+* Thu Sep 24 1998 Marcin 'Qrczak' Kowalczyk <qrczak@knm.org.pl>
+- added BuildRoot,
+- added full %attr description in %files,
+- allow building from non-root account (set suid root only in %attr),
+- added pl translation.
+
+* Tue Aug  4 1998 Jeff Johnson <jbj@redhat.com>
+- build root
+
+* Wed Jun 10 1998 Prospector System <bugs@redhat.com>
+- translations modified for de
+
+* Fri Apr 24 1998 Prospector System <bugs@redhat.com>
+- translations modified for de, fr, tr
+
+* Mon Apr 20 1998 Erik Troan <ewt@redhat.com>
+- updated to version 3.0
+
+* Tue Oct 21 1997 Michael Fulbright <msf@redhat.com>
+- updated spec file and upgraded to version 2.8
+
+* Wed Oct 15 1997 Erik Troan <ewt@redhat.com>
+- build against new libpng
+
+* Fri Aug 22 1997 Erik Troan <ewt@redhat.com>
+- built against glibc

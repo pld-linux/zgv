@@ -1,0 +1,56 @@
+diff -Nur zgv-5.2.orig/config.mk zgv-5.2/config.mk
+--- zgv-5.2.orig/config.mk	Thu Jun 14 17:05:30 2001
++++ zgv-5.2/config.mk	Thu Jun 14 17:05:50 2001
+@@ -51,7 +51,7 @@
+ #
+ # (If you're not bothered about TIFF support, just leave it as-is.)
+ #
+-TIFFTOPNM=/usr/local/netpbm/bin/tifftopnm
++TIFFTOPNM=/usr/bin/tifftopnm
+ 
+ # Uncomment this if you want zgv to support Kodak's Photo-CD format
+ # (`.pcd' files). This requires libpcd (part of the xpcd package).
+diff -Nur zgv-5.2.orig/src/vgadisp.c zgv-5.2/src/vgadisp.c
+--- zgv-5.2.orig/src/vgadisp.c	Wed Sep 27 23:23:37 2000
++++ zgv-5.2/src/vgadisp.c	Thu Jun 14 17:07:25 2001
+@@ -389,10 +389,10 @@
+             result=_PICERR_NOFILE;
+           else
+             {
++            fclose(ftmp); /* man tifftopnm says tifftopnm can't read from stdin */
+             snprintf(buf,sizeof(buf),
+-            		TIFFTOPNM " 2>/dev/null <&%d",fileno(ftmp));
++            		TIFFTOPNM " %s 2>/dev/null",giffn);
+             tmp=popen(buf,"r");
+-            fclose(ftmp);		/* (since file handle now dup'd) */
+             if(tmp==NULL)
+               result=_PICERR_NOMEM;	/* usually this will mean no memory */
+             else
+@@ -411,6 +411,7 @@
+               else
+                 {
+                 ungetc(tmpc,tmp);
++		fcntl(fileno(stdin),F_SETFL,O_NONBLOCK); /* popen unset this??? */
+                 result=read_pnm_main(tmp,howfarfunc,&theimage,&palette,
+                 		&pixelsize,&ginfo,pclose);
+                 }
+--- zgv-5.2/src/magic.c.orig	Fri Oct 15 05:10:35 1999
++++ zgv-5.2/src/magic.c	Thu Jun 14 18:41:18 2001
+@@ -31,7 +31,7 @@
+  * mrf files must have "MRF"
+  * XBM files must have "#defin" (this is fairly bogus!)
+  * XPM files must have slash then "* XPM"
+- * TIFF files must have either "II*" or "MM*"
++ * TIFF files must have either "II" 0x2A 0x00 or "MM" 0x00 0x2A
+  * TGA files suck rocks ;-) (heuristics in this case)
+  */
+ 
+@@ -76,7 +76,7 @@
+   return(_IS_XPM);
+ 
+ /* TIFF */
+-if(strncmp(buf,"II*",3)==0 || strncmp(buf,"MM*",3)==0)
++if(strncmp(buf,"II*",4)==0 || (strncmp(buf,"MM",2)==0 && buf[2]==0x00 && buf[3]==0x2A))
+   return(_IS_TIFF);
+ 
+ /* TGA */

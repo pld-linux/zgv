@@ -7,7 +7,7 @@ Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
 Version:	5.2
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik

@@ -34,3 +34,23 @@ diff -Nur zgv-5.2.orig/src/vgadisp.c zgv-5.2/src/vgadisp.c
                  result=read_pnm_main(tmp,howfarfunc,&theimage,&palette,
                  		&pixelsize,&ginfo,pclose);
                  }
+--- zgv-5.2/src/magic.c.orig	Fri Oct 15 05:10:35 1999
++++ zgv-5.2/src/magic.c	Thu Jun 14 18:41:18 2001
+@@ -31,7 +31,7 @@
+  * mrf files must have "MRF"
+  * XBM files must have "#defin" (this is fairly bogus!)
+  * XPM files must have slash then "* XPM"
+- * TIFF files must have either "II*" or "MM*"
++ * TIFF files must have either "II" 0x2A 0x00 or "MM" 0x00 0x2A
+  * TGA files suck rocks ;-) (heuristics in this case)
+  */
+ 
+@@ -76,7 +76,7 @@
+   return(_IS_XPM);
+ 
+ /* TIFF */
+-if(strncmp(buf,"II*",3)==0 || strncmp(buf,"MM*",3)==0)
++if(strncmp(buf,"II*",4)==0 || (strncmp(buf,"MM",2)==0 && buf[2]==0x00 && buf[3]==0x2A))
+   return(_IS_TIFF);
+ 
+ /* TGA */

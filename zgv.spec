@@ -2,12 +2,14 @@
 # _with_pcd - with Kodak PhotoCD support
 Summary:	console viewer for many graphics formats
 Summary(de):	Konsolenbetrachter für viele Grafikformate
+Summary(es):	Visualizador para muchos formatos de gráficos (consola)
 Summary(fr):	Visualiseur d'image en mode console, pour de nombreux formats graphiques
 Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
+Summary(pt_BR):Visualizador para muitos formatos de gráficos (console)
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
-Version:	5.2
-Release:	4
+Version:	5.4
+Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik
@@ -15,13 +17,14 @@ Group(pl):	Aplikacje/Grafika
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
-Patch2:		%{name}-tifftopnm.patch
-BuildRequires:	svgalib-devel
+BuildRequires:	gawk
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng >= 1.0.8
+BuildRequires:	svgalib-devel
+BuildRequires:	texinfo
 BuildRequires:	zlib-devel
-BuildRequires:	gawk
 %{?_with_pcd:BuildRequires: libpcd-devel}
+Requires:	/usr/X11R6/lib/X11/rgb.txt
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Exclusivearch:	%{ix86} alpha
 
@@ -30,9 +33,9 @@ Zgv is a picture viewer capable of displaying GIF files as defined by
 CompuServe, with the exceptions listed in the RESTRICTIONS section. It
 is also capable of displaying JPEG/JFIF files using the Independant
 JPEG Group's JPEG software, PBM/PGM/PPM files as used by pbmplus and
-netpbm, Microsoft Windows and OS/2 BMP files, Targa (TGA) files,
-the new PNG format%{?_with_pcd: and PhotoCD}.
-It can display TIFF files if you install netpbm-progs (tifftopnm).
+netpbm, Microsoft Windows and OS/2 BMP files, Targa (TGA) files, the
+new PNG format%{?_with_pcd: and PhotoCD}. It can display TIFF files if
+you install netpbm-progs (tifftopnm).
 
 %description -l de
 zgv ist ein Bild-Viewer, der GIF-Dateien nach der
@@ -41,6 +44,14 @@ Teil RESTRICTIONS. Ferner kann er JPEG/JFIF-Dateien unter Verwendung
 der JPEG-Software der unabhängigen JPEG-Group, PBM/PGM/PPM-Dateien wie
 sie pbmplus und netpbm benutzen, sowie Microsoft Windows und OS/2
 BMB-Dateien, Targa (TGA) und das neue PNG-Format anzeigen.
+
+%description -l es
+Zgv es un visualizador de imágenes capaz de enseñar archivos tipo
+"GIF" como las definidas por la CompuServe. También es capaz de
+enseñar archivos JPEG/JFIF usando "Independant JPEG Group JPEG
+software", archivos PBM/PGM/PPM como los usados por la pbmplus y
+netpbm, archivos Microsoft Windows y OS/2 BMP, archivos Targa (TGA), y
+el nuevo formato PNG.
 
 %description -l fr
 Zgv est un visualisateur de fichiers GIF tels que ceux qui sont
@@ -58,6 +69,14 @@ Microsoft Windows i OS/2), Targa (TGA), PNG%{?_with_pcd: i PhotoCD}.
 Mo¿e te¿ wy¶wietlaæ pliki TIFF po zainstalowaniu pakietu netpbm-progs
 (program tifftopnm).
 
+%description -l pt_BR
+Zgv é um visualizador de imagens capaz de mostrar arquivos tipo "GIF"
+como as definidas pela CompuServe. Ele também é capaz de mostrar
+arquivos JPEG/JFIF usando o "Independent JPEG Group JPEG software",
+arquivos PBM/PGM/PPM como os usados pela pbmplus e netpbm, arquivos
+Microsoft Windows e OS/2 BMP, arquivos Targa (TGA), e o novo formato
+PNG.
+
 %description -l tr
 Zgv, konsol ortamýndan CompuServe'in GIF formatý (RESTRICTIONS ile
 belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa
@@ -67,7 +86,6 @@ belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa
 %setup  -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %if %{?_with_pcd:1}%{!?_with_pcd:0}
 sed -e 's@#\(PCDDEF=.*\)@\1@' config.mk > config.mk.new

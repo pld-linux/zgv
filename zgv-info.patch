@@ -1,0 +1,16 @@
+diff -Nru zgv-3.2/doc/zgv.texi zgv-3.2.new/doc/zgv.texi
+--- zgv-3.2/doc/zgv.texi	Mon Mar 15 20:06:36 1999
++++ zgv-3.2.new/doc/zgv.texi	Mon Mar 29 22:28:52 1999
+@@ -16,9 +16,10 @@
+ @c This is `ifinfo' to stop texi2{html,roff} seeing it, as they don't
+ @c handle it.
+ @ifinfo
+-@dircategory Graphics Utilities
++@dircategory Graphics Utilities:
+ @direntry
+-* Zgv: (zgv).   A picture viewer for Linux systems with VGA/SVGA.
++* Zgv: (zgv)				A picture viewer for Linux
++					systems with VGA/SVGA.
+ @end direntry
+ @end ifinfo
+ 

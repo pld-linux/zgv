@@ -1,7 +1,16 @@
-diff -Nru zgv-5.2/config.mk zgv-5.2.new/config.mk
---- zgv-5.2/config.mk	Sat Nov  4 15:55:35 2000
-+++ zgv-5.2.new/config.mk	Sat Nov  4 15:54:39 2000
-@@ -34,7 +34,7 @@
+diff -Nru zgv-5.7/config.mk zgv-5.7.new/config.mk
+--- zgv-5.7/config.mk	Sat Nov  4 15:55:35 2000
++++ zgv-5.7.new/config.mk	Sat Nov  4 15:54:39 2000
+@@ -12,7 +12,7 @@
+ # This is likely to be what you'll want for most systems:
+ #
+ CC=gcc
+-CFLAGS=-O2 -Wall -fomit-frame-pointer -finline-functions
++CFLAGS=$(OPTFLAGS) -Wall
+ #
+ # If you're brave enough to try compiling zgv on a non-x86 system :-),
+ # this might be a better bet:
+@@ -63,7 +63,7 @@
  #
  # If you don't know what to do, leave it as-is.
  #
@@ -24,28 +33,22 @@ diff -Nru zgv-5.2/config.mk zgv-5.2.new/config.mk
  # Update info `dir' file.
  # Info always uses a dir file in preference to a dir.gz, so we don't use
  # dir.gz unless it's the only game in town.
---- zgv-5.4/src/Makefile.orig	Fri Mar 16 18:12:55 2001
-+++ zgv-5.4/src/Makefile	Mon Jul 16 02:45:22 2001
-@@ -13,10 +13,11 @@
- CC=gcc
- 
- WARNOPTS = -Wall
-+OPTFLAGS = -O2 -fomit-frame-pointer -finline-functions
- 
- CFLAGS = $(WARNOPTS) $(PCDDEF) \
- 	-DRGB_DB_FILE=\"$(RGB_DB)\" \
--	-O2 -fomit-frame-pointer -finline-functions
-+	$(OPTFLAGS)
- 
- ZGV_LIBS = -lvgagl -lvga -ljpeg -lpng -ltiff -lz -lm
- ifeq ($(PCDDEF),-DPCD_SUPPORT)
-@@ -52,7 +52,8 @@
- 	$(CC) $(INFODIRDEF) -o install-info install-info.c
+--- zgv-5.7/src/Makefile.orig	2003-04-05 21:50:50.000000000 +0200
++++ zgv-5.7/src/Makefile	2003-08-02 20:50:14.000000000 +0200
+@@ -51,12 +51,12 @@
  
  install: all
--	install -m 4755 -o root -g root -s zgv $(BINDIR)
-+	install -d $(DESTDIR)$(BINDIR)
-+	install zgv $(DESTDIR)$(BINDIR)
+ 	@if [ "$(BACKEND)" = SVGALIB ]; then \
+-	  echo install -m 4755 -o root -g root -s zgv $(BINDIR); \
+-	  install -m 4755 -o root -g root -s zgv $(BINDIR); \
++	  echo install -D -m 755 zgv $(DESTDIR)$(BINDIR)/zgv; \
++	  install -D -m 755 zgv $(DESTDIR)$(BINDIR)/zgv; \
+ 	fi
+ 	@if [ "$(BACKEND)" = SDL ]; then \
+-	  echo install -m 755 -s zgv $(BINDIR)/zgv-sdl; \
+-	  install -m 755 -s zgv $(BINDIR)/zgv-sdl; \
++	  echo install -D -m 755 zgv $(DESTDIR)$(BINDIR)/zgv-sdl; \
++	  install -D -m 755 zgv $(DESTDIR)$(BINDIR)/zgv-sdl; \
+ 	fi
  
  uninstall:
- 	$(RM) $(BINDIR)/zgv

@@ -124,8 +124,6 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 
 install doc/sample.zgvrc $RPM_BUILD_ROOT%{_sysconfdir}/zgv.conf
 
-gzip -9nf AUTHORS ChangeLog NEWS README* TODO
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -137,7 +135,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS ChangeLog NEWS README* TODO
 %config(noreplace,missingok) %verify(not md5 mtime size) %{_sysconfdir}/zgv.conf
 %attr(755,root,root) %{_bindir}/%{name}
 %{_mandir}/man1/*

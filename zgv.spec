@@ -1,6 +1,6 @@
 Summary:	console viewer for many graphics formats
 Summary(de):	Konsolenbetrachter für viele Grafikformate
-Summary(fr):	Visualiseur d'image en mode console, pour de nombreux formats graphiques.
+Summary(fr):	Visualiseur d'image en mode console, pour de nombreux formats graphiques
 Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
@@ -91,8 +91,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc {README,README.fonts,ChangeLog,TODO,NEWS,doc/sample.zgvrc}.gz
-
-%attr(0511,root,root) %{_bindir}/%{name}
-
+%attr(755,root,root) %{_bindir}/%{name}
 %{_mandir}/man1/*
 %{_infodir}/*

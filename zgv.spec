@@ -14,18 +14,16 @@ Summary(uk):	Консольна програма перегляду багатьох граф╕чних формат╕в
 Summary(tr):	BirГok resim formatЩnЩ gЖrЭntЭleyebilen konsol aracЩ
 Summary(ru):	Консольная программа просмотра множества графических форматов
 Name:		zgv
-Version:	5.8
-Release:	3
+Version:	5.9
+Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
-# Source0-md5:	016bb8f3b9f3d1aa01a837dbbb67c5dc
+# Source0-md5:	d65a434ddeb612f0c488177f873afad2
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
 Patch2:		%{name}-Dkey.patch
 Patch3:		%{name}-home_etc.patch
-# http://www.svgalib.org/rus/zgv/zgv-5.8-integer-overflow-fix.dif
-Patch4:		%{name}-CAN-2004-0999.patch
 %{?with_sdl:BuildRequires:	SDL-devel}
 BuildRequires:	gawk
 BuildRequires:	libjpeg-devel
@@ -145,12 +143,11 @@ Microsoft Windows i OS/2), Targa (TGA), TIFF, PNG%{?with_pcd: i PhotoCD}.
 Ten pakiet zawiera interfejs korzystajacy z biblioteki SDL.
 
 %prep
-%setup  -q
+%setup -q
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %if %{with pcd}
 sed -e 's@#\(PCDDEF=.*\)@\1@' config.mk > config.mk.new

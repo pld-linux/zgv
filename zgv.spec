@@ -5,7 +5,7 @@ Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
 Version:	3.2
-Release:	2
+Release:	3
 Copyright:	GPL
 Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
@@ -68,14 +68,14 @@ rm -rf $RPM_BUILD_ROOT
 make PREFIX="$RPM_BUILD_ROOT/usr" install
 
 gzip -9nf TODO README README.fonts ChangeLog NEWS doc/sample.zgvrc \
-	$RPM_BUILD_ROOT/usr/{info/zgv*,man/man1/*}
+	$RPM_BUILD_ROOT/usr/{share/info/zgv*,share/man/man1/*}
 
 %post
-/sbin/install-info /usr/info/zgv.gz /etc/info-dir
+/sbin/install-info /usr/share/info/zgv.gz /etc/info-dir
 
 %preun
 if [ "$1" = "0" ]; then
-        /sbin/install-info --delete /usr/info/zgv.gz /etc/info-dir
+        /sbin/install-info --delete /usr/share/info/zgv.gz /etc/info-dir
 fi
 
 %clean
@@ -87,10 +87,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %attr(4511,root,root) /usr/bin/zgv
 
-/usr/man/man1/zgv.1.*
-/usr/info/zgv*
+/usr/share/man/man1/zgv.1.*
+/usr/share/info/zgv*
 
 %changelog
+* Mon May 10 1999 Piotr Czerwiñski <pius@pld.org.pl>
+  [3.2-3]
+- updated zgv-makefile.patch,
+- package is now FHS 2.0 compliant.
+
 * Wed Apr 21 1999 Piotr Czerwiñski <pius@pld.org.pl>
   [3.2-2]
 - recompiled on rpm3,

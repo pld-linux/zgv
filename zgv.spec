@@ -12,8 +12,12 @@ Group(pl):	Aplikacje/Grafika
 Source:		ftp://sunsite.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
 Patch0:		zgv-makefile.patch
 Patch1:		zgv-info.patch
+BuildPrereq:	svgalib-devel
+BuildPrereq:	libjpeg-devel
+BuildPrereq:	libpng-devel
+BuildPrereq:	zlib-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
-Exclusivearch:	i386 alpha
+Exclusivearch:	%{ix86} alpha
 
 %description
 Zgv is a picture viewer capable of displaying GIF files as defined by

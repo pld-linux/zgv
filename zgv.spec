@@ -5,11 +5,11 @@ Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
 Version:	5.1
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Graphics
-Group(pl):	Aplikacje/Grafika
 Group(de):	Applikationen/Grafik
+Group(pl):	Aplikacje/Grafika
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
@@ -63,7 +63,7 @@ belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa
 
 %build
 
-%{__make} all OPTFLAGS="$RPM_OPT_FLAGS" \
+%{__make} all OPTFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}" \
 	INCDIRS="-I%{_includedir}" \
 	RGB_DB="%{_prefix}/X11R6/lib/X11/rgb.txt"
 
@@ -72,14 +72,13 @@ belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} DESTDIR=$RPM_BUILD_ROOT \
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
 	BINDIR=%{_bindir} \
 	MANDIR=%{_mandir}/man1 \
-	INFODIR=%{_infodir} \
-	install
+	INFODIR=%{_infodir}
 
-gzip -9nf TODO README README.fonts ChangeLog NEWS doc/sample.zgvrc \
-	$RPM_BUILD_ROOT{%{_infodir}/%{name}*,%{_mandir}/man1/*}
+gzip -9nf TODO README README.fonts ChangeLog NEWS doc/sample.zgvrc
 
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1

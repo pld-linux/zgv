@@ -5,13 +5,14 @@ Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
 Version:	3.0
-Release:	3
+Release:	6
 Copyright:	GPL
 Group:		Applications/Graphics
+Group(pl):	Aplikacje/Grafika
 Source:		ftp://sunsite.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}-src.tar.gz
 Patch0:		zgv-3.0-redhat.patch
 Patch1:		zgv2.7-glibc.patch
-BuildRoot:	/var/tmp/%{name}-%{version}-root
+BuildRoot:	/tmp/%{name}-%{version}-root
 Exclusivearch:	i386 alpha
 
 %description
@@ -49,7 +50,7 @@ belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa (TGA) ve
 yeni PNG formatlarýndaki resimleri görüntüleyebilmektedir.
 
 %prep
-%setup -n zgv-%{version}-src -q
+%setup -n zgv-3.0-src -q
 %patch0 -p1 -b .config
 %patch1 -p1 -b .glibc
 
@@ -58,20 +59,35 @@ make CFLAGS="$RPM_OPT_FLAGS"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/{bin,man/man1}
 
+install -d $RPM_BUILD_ROOT/usr/{bin,man/man1}
 install -s zgv $RPM_BUILD_ROOT/usr/bin
 install zgv.1 $RPM_BUILD_ROOT/usr/man/man1
+
+gzip -9nf README README.fonts ChangeLog doc/NEWS doc/sample.zgvrc \
+	$RPM_BUILD_ROOT/usr/man/man1/*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
+%defattr(644,root,root,755)
+%doc README.gz README.fonts.gz ChangeLog.gz 
+%doc doc/NEWS.gz doc/sample.zgvrc.gz
 %attr(4511, root, root) /usr/bin/zgv
-%doc %attr(644, root, man) /usr/man/man1/zgv.1
+/usr/man/man1/zgv.1.*
 
 %changelog
-* Thu Sep 24  1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+* Wed Mar 24 1999 Piotr Czerwiñski <pius@pld.org.pl>
+- changed BuildRoot to /tmp/%%{name}-%%{version}-root,
+- added Group(pl),
+- added %deffatr description in %files,
+- added documentation,
+- added gzipping documentation and man pages,
+- removed man group from man pages,
+- cosmetic changes.
+
+* Thu Sep 24 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
   [3.0-6]
 - added aplha to Exclusivearch list.
 

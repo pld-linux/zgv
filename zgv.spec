@@ -76,14 +76,14 @@ make DESTDIR=$RPM_BUILD_ROOT \
 	install
 
 gzip -9nf TODO README README.fonts ChangeLog NEWS doc/sample.zgvrc \
-	$RPM_BUILD_ROOT{%{_infodir}/zgv*,%{_mandir}/man1/*}
+	$RPM_BUILD_ROOT{%{_infodir}/%{name}*,%{_mandir}/man1/*}
 
 %post
-/sbin/install-info %{_infodir}/zgv.gz /etc/info-dir
+/sbin/install-info %{_infodir}/%{name}.gz /etc/info-dir
 
 %preun
 if [ "$1" = "0" ]; then
-        /sbin/install-info --delete %{_infodir}/zgv.gz /etc/info-dir
+        /sbin/install-info --delete %{_infodir}/%{name}.gz /etc/info-dir
 fi
 
 %clean
@@ -93,69 +93,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc {README,README.fonts,ChangeLog,TODO,NEWS,doc/sample.zgvrc}.gz
 
-%attr(4511,root,root) %{_bindir}/zgv
+%attr(4511,root,root) %{_bindir}/%{name}
 
-%{_mandir}/man1/zgv.1.*
-%{_infodir}/zgv*
+%{_mandir}/man1/*
+%{_infodir}/*
 
 %changelog
-* Mon May 10 1999 Piotr Czerwiñski <pius@pld.org.pl>
+* Thu May 20 1999 Piotr Czerwiñski <pius@pld.org.pl> 
   [3.2-3]
-- updated zgv-makefile.patch,
-- package is now FHS 2.0 compliant.
-
-* Wed Apr 21 1999 Piotr Czerwiñski <pius@pld.org.pl>
-  [3.2-2]
-- recompiled on rpm3,
-- cosmetic changes.
-
-* Sat Mar 27 1999 Piotr Czerwiñski <pius@pld.org.pl>
-  [3.2-1]
-- updated to 3.2,
-- removed zgv-3.0-redhat.patch and zgv2.7-glibc.patch,
-- added zgv-makefile.patch (fixed passing $RPM_OPT_FLAGS, changed install
-  procedure to allow building from non-root account),
-- rewritten %build,
-- simplifications in %install,
-- added info files,
-- added %post and %preun.
-
-* Wed Mar 24 1999 Piotr Czerwiñski <pius@pld.org.pl>
-- changed BuildRoot to /tmp/%%{name}-%%{version}-root,
-- added Group(pl),
-- added %deffatr description in %files,
-- added documentation,
-- added gzipping documentation and man pages,
-- removed man group from man pages,
-- cosmetic changes.
-
-* Thu Sep 24 1998 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [3.0-6]
-- added aplha to Exclusivearch list.
-
-* Thu Sep 24 1998 Marcin 'Qrczak' Kowalczyk <qrczak@knm.org.pl>
-- added BuildRoot,
-- added full %attr description in %files,
-- allow building from non-root account (set suid root only in %attr),
-- added pl translation.
-
-* Tue Aug  4 1998 Jeff Johnson <jbj@redhat.com>
-- build root
-
-* Wed Jun 10 1998 Prospector System <bugs@redhat.com>
-- translations modified for de
-
-* Fri Apr 24 1998 Prospector System <bugs@redhat.com>
-- translations modified for de, fr, tr
-
-* Mon Apr 20 1998 Erik Troan <ewt@redhat.com>
-- updated to version 3.0
-
-* Tue Oct 21 1997 Michael Fulbright <msf@redhat.com>
-- updated spec file and upgraded to version 2.8
-
-* Wed Oct 15 1997 Erik Troan <ewt@redhat.com>
-- build against new libpng
-
-* Fri Aug 22 1997 Erik Troan <ewt@redhat.com>
-- built against glibc
+- package is FHS 2.0 compliant,
+- spec file based on RH version; rewritten for PLD use by me, 
+  Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  and Marcin 'Qrczak' Kowalczyk <qrczak@knm.org.pl>.

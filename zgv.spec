@@ -11,6 +11,7 @@ Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
 Source:		ftp://sunsite.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
 Patch0:		zgv-makefile.patch
+Patch1:		zgv-info.patch
 BuildRoot:	/tmp/%{name}-%{version}-root
 Exclusivearch:	i386 alpha
 
@@ -51,6 +52,7 @@ yeni PNG formatlarýndaki resimleri görüntüleyebilmektedir.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 
@@ -72,7 +74,7 @@ gzip -9nf TODO README README.fonts ChangeLog NEWS doc/sample.zgvrc \
 /sbin/install-info /usr/info/zgv.gz /etc/info-dir
 
 %preun
-if [ $1 = 0 ]; then
+if [ "$1" = "0" ]; then
         /sbin/install-info --delete /usr/info/zgv.gz /etc/info-dir
 fi
 

@@ -1,24 +1,24 @@
-diff -Nru zgv-5.0.orig/config.mk zgv-5.0/config.mk
---- zgv-5.0.orig/config.mk	Sat Apr 29 18:00:14 2000
-+++ zgv-5.0/config.mk	Sat Apr 29 18:03:57 2000
+diff -Nru zgv-5.2/config.mk zgv-5.2.new/config.mk
+--- zgv-5.2/config.mk	Sat Nov  4 15:55:35 2000
++++ zgv-5.2.new/config.mk	Sat Nov  4 15:54:39 2000
 @@ -1,4 +1,4 @@
 -# This file configures zgv's Makefiles. You should edit the settings
 +# tHIS FIle configures zgv's Makefiles. You should edit the settings
  # below as needed.
  
  # If you want to tune the optimisation used (you shouldn't need to,
-@@ -26,7 +26,7 @@
- # example, perhaps your distribution automatically handles this for
- # you) you should uncomment this to prevent `make install' doing that.
+@@ -34,7 +34,7 @@
+ #
+ # If you don't know what to do, leave it as-is.
  #
 -#INFO_DIR_UPDATE=no
 +INFO_DIR_UPDATE=no
  
  
- # ------------------ Library-related options ----------------------
-diff -Nru zgv-5.0.orig/doc/Makefile zgv-5.0/doc/Makefile
---- zgv-5.0.orig/doc/Makefile	Sat Apr 29 18:00:14 2000
-+++ zgv-5.0/doc/Makefile	Sat Apr 29 18:04:46 2000
+ # ------------------- Format-related options ----------------------
+diff -Nru zgv-5.2/doc/Makefile zgv-5.2.new/doc/Makefile
+--- zgv-5.2/doc/Makefile	Sat Nov  4 15:55:35 2000
++++ zgv-5.2.new/doc/Makefile	Sat Nov  4 15:54:39 2000
 @@ -34,8 +34,10 @@
  else
  install: ../src/install-info
@@ -32,24 +32,24 @@ diff -Nru zgv-5.0.orig/doc/Makefile zgv-5.0/doc/Makefile
  # Update info `dir' file.
  # Info always uses a dir file in preference to a dir.gz, so we don't use
  # dir.gz unless it's the only game in town.
-diff -Nru zgv-5.0.orig/src/Makefile zgv-5.0/src/Makefile
---- zgv-5.0.orig/src/Makefile	Sat Apr 29 18:00:14 2000
-+++ zgv-5.0/src/Makefile	Sat Apr 29 18:07:07 2000
-@@ -13,10 +13,10 @@
+diff -Nru zgv-5.2/src/Makefile zgv-5.2.new/src/Makefile
+--- zgv-5.2/src/Makefile	Sat Nov  4 15:55:35 2000
++++ zgv-5.2.new/src/Makefile	Sat Nov  4 15:57:00 2000
+@@ -13,11 +13,12 @@
  CC=gcc
  
  WARNOPTS = -Wall
 +OPTFLAGS = -O2 -fomit-frame-pointer -finline-functions
  
--CFLAGS = $(WARNOPTS) $(PCDDEF) \
--	-DRGB_DB_FILE=\"$(RGB_DB)\" \
+ CFLAGS = $(WARNOPTS) $(PCDDEF) \
+ 	-DRGB_DB_FILE=\"$(RGB_DB)\" \
+ 	-DTIFFTOPNM=\"$(TIFFTOPNM)\" \
 -	-O2 -fomit-frame-pointer -finline-functions
-+CFLAGS = $(INCDIRS) $(WARNOPTS) $(PNGDEF) $(OPTFLAGS) \
-+	-DRGB_DB_FILE=\"$(RGB_DB)\" 
++	$(OPTFLAGS)
  
  ZGV_LIBS = -lvgagl -lvga -ljpeg -lpng -lz -lm
  ifeq ($(PCDDEF),-DPCD_SUPPORT)
-@@ -52,7 +52,8 @@
+@@ -53,7 +54,8 @@
  	$(CC) $(INFODIRDEF) -o install-info install-info.c
  
  install: all
@@ -57,5 +57,5 @@ diff -Nru zgv-5.0.orig/src/Makefile zgv-5.0/src/Makefile
 +	mkdir -p $(DESTDIR)$(BINDIR)
 +	install -s zgv $(DESTDIR)$(BINDIR)
  
- clean:
- 	$(RM) *.o *~ zgv munglogo zgvlogo.h bdf2h fontbmps.h install-info
+ uninstall:
+ 	$(RM) $(BINDIR)/zgv

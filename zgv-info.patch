@@ -1,15 +1,35 @@
-diff -Nru zgv-3.2/doc/zgv.texi zgv-3.2.new/doc/zgv.texi
---- zgv-3.2/doc/zgv.texi	Mon Mar 15 20:06:36 1999
-+++ zgv-3.2.new/doc/zgv.texi	Mon Mar 29 22:28:52 1999
+diff -Nru zgv-5.2/doc/Makefile zgv-5.2.new/doc/Makefile
+--- zgv-5.2/doc/Makefile	Sat Nov  4 15:58:06 2000
++++ zgv-5.2.new/doc/Makefile	Sat Nov  4 16:00:31 2000
+@@ -37,7 +37,7 @@
+ 	mkdir -p $(DESTDIR)$(MANDIR)
+ 	mkdir -p $(DESTDIR)$(INFODIR)
+ 	install zgv.1 $(DESTDIR)$(MANDIR)
+-	install zgv zgv-? $(DESTDIR)$(INFODIR)
++	install zgv.info-* $(DESTDIR)$(INFODIR)
+ # Update info `dir' file.
+ # Info always uses a dir file in preference to a dir.gz, so we don't use
+ # dir.gz unless it's the only game in town.
+diff -Nru zgv-5.2/doc/zgv.texi zgv-5.2.new/doc/zgv.texi
+--- zgv-5.2/doc/zgv.texi	Tue Oct 10 06:26:10 2000
++++ zgv-5.2.new/doc/zgv.texi	Sat Nov  4 15:59:30 2000
+@@ -1,6 +1,6 @@
+ \input texinfo   @c -*-texinfo-*-
+ @c %**start of header
+-@setfilename zgv
++@setfilename zgv.info
+ @settitle The zgv manual
+ @setchapternewpage odd
+ @c %**end of header
 @@ -16,9 +16,10 @@
  @c This is `ifinfo' to stop texi2{html,roff} seeing it, as they don't
  @c handle it.
  @ifinfo
 -@dircategory Graphics Utilities
-+@dircategory Graphics utilities:
++@dircategory Graphics Utilities:
  @direntry
--* Zgv: (zgv).   A picture viewer for Linux systems with VGA/SVGA.
-+* Zgv: (zgv).				A picture viewer for Linux
+-* zgv: (zgv).   A picture viewer for Linux systems with VGA/SVGA.
++* zgv: (zgv).				A picture viewer for Linux
 +					systems with VGA/SVGA
  @end direntry
  @end ifinfo

@@ -17,17 +17,16 @@ Summary(uk):	Консольна програма перегляду багатьох граф╕чних формат╕в
 Summary(tr):	BirГok resim formatЩnЩ gЖrЭntЭleyebilen konsol aracЩ
 Summary(ru):	Консольная программа просмотра множества графических форматов
 Name:		zgv
-Version:	5.7
-Release:	2
+Version:	5.8
+Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
-# Source0-md5:	50f0127c250b6efe9c5f8850b96f3841
+# Source0-md5:	016bb8f3b9f3d1aa01a837dbbb67c5dc
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
 Patch2:		%{name}-Dkey.patch
-Patch3:		%{name}-gcc33.patch
-Patch4:		%{name}-home_etc.patch
+Patch3:		%{name}-home_etc.patch
 %{?with_sdl:BuildRequires:	SDL-devel}
 BuildRequires:	gawk
 BuildRequires:	libjpeg-devel
@@ -152,7 +151,6 @@ Ten pakiet zawiera interfejs korzystajacy z biblioteki SDL.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %if %{with pcd}
 sed -e 's@#\(PCDDEF=.*\)@\1@' config.mk > config.mk.new
@@ -192,7 +190,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 %{?with_svga:%{?with_sdl:install zgv-svga $RPM_BUILD_ROOT%{_bindir}/zgv}}
 %{?with_sdl:echo '.so zgv.1' > $RPM_BUILD_ROOT%{_mandir}/man1/zgv-sdl.1}
 
-install doc/sample.zgvrc $RPM_BUILD_ROOT%{_sysconfdir}/zgv.conf
+sed -e "s@/usr/local/etc@%{_sysconfdir}@g" doc/sample.zgvrc >$RPM_BUILD_ROOT%{_sysconfdir}/zgv.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT

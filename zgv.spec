@@ -6,10 +6,10 @@ Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
 Version:	5.0
 Release:	1
-Copyright:	GPL
+License:	GPL
 Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
-Source: ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
+Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
 Patch0:		zgv-DESTDIR.patch
 Patch1:		zgv-info.patch
 BuildRequires:	svgalib-devel
@@ -28,30 +28,31 @@ netpbm, Microsoft Windows and OS/2 BMP files, Targa (TGA) files, and
 the new PNG format.
 
 %description -l de
-zgv ist ein Bild-Viewer, der GIF-Dateien nach der CompuServe-Definition 
-anzeigen kann, abgesehen von den Ausnahmen im Teil RESTRICTIONS. Ferner 
-kann er JPEG/JFIF-Dateien unter Verwendung der JPEG-Software der 
-unabhängigen JPEG-Group, PBM/PGM/PPM-Dateien wie sie pbmplus und netpbm 
-benutzen, sowie Microsoft Windows und OS/2 BMB-Dateien, Targa (TGA) und 
-das neue PNG-Format anzeigen.
+zgv ist ein Bild-Viewer, der GIF-Dateien nach der
+CompuServe-Definition anzeigen kann, abgesehen von den Ausnahmen im
+Teil RESTRICTIONS. Ferner kann er JPEG/JFIF-Dateien unter Verwendung
+der JPEG-Software der unabhängigen JPEG-Group, PBM/PGM/PPM-Dateien wie
+sie pbmplus und netpbm benutzen, sowie Microsoft Windows und OS/2
+BMB-Dateien, Targa (TGA) und das neue PNG-Format anzeigen.
 
 %description -l fr
-Zgv est un visualisateur de fichiers GIF tels que ceux qui sont définis
-par CompuServe, avec les exceptions listées dans la section RESTRICTIONS.
-Il peut aussi afficher les fichiers JPEG/JTIF utilisés par le logiciel
-JPEG de l'Independant JPEG Group, les fichiers PBM/PGM/PPM utilisés par
-pbmplus et netpbm, les fichiers BMP de Microsoft Windows et OS/2,
-les fichiers Targa (TGA) et le nouveau format PNG.
+Zgv est un visualisateur de fichiers GIF tels que ceux qui sont
+définis par CompuServe, avec les exceptions listées dans la section
+RESTRICTIONS. Il peut aussi afficher les fichiers JPEG/JTIF utilisés
+par le logiciel JPEG de l'Independant JPEG Group, les fichiers
+PBM/PGM/PPM utilisés par pbmplus et netpbm, les fichiers BMP de
+Microsoft Windows et OS/2, les fichiers Targa (TGA) et le nouveau
+format PNG.
 
 %description -l pl
 Zgv potrafi wy¶wietlaæ obrazki w formacie CompuServe GIF (z wyj±tkami
-opisanymi w rozdziale RESTRICTIONS), JPEG/JFIF, PBM/PGM/PPM, BMP
-(z Microsoft Windows i OS/2), Targa (TGA) i PNG.
+opisanymi w rozdziale RESTRICTIONS), JPEG/JFIF, PBM/PGM/PPM, BMP (z
+Microsoft Windows i OS/2), Targa (TGA) i PNG.
 
 %description -l tr
 Zgv, konsol ortamýndan CompuServe'in GIF formatý (RESTRICTIONS ile
-belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa (TGA) ve
-yeni PNG formatlarýndaki resimleri görüntüleyebilmektedir.
+belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa
+(TGA) ve yeni PNG formatlarýndaki resimleri görüntüleyebilmektedir.
 
 %prep
 %setup  -q
@@ -61,8 +62,8 @@ yeni PNG formatlarýndaki resimleri görüntüleyebilmektedir.
 %build
 
 make all OPTFLAGS="$RPM_OPT_FLAGS" \
-	INCDIRS="-I/usr/include" \
-	RGB_DB="/usr/X11R6/lib/X11/rgb.txt"
+	INCDIRS="-I%{_includedir}" \
+	RGB_DB="%{_prefix}/X11R6/lib/X11/rgb.txt"
 
 make info
 

@@ -61,7 +61,7 @@ yeni PNG formatlarýndaki resimleri görüntüleyebilmektedir.
 %build
 
 make all OPTFLAGS="$RPM_OPT_FLAGS" \
-	INCDIRS="-I/usr/include" \
+	INCDIRS="-I%{_includedir}" \
 	RGB_DB="/usr/X11R6/lib/X11/rgb.txt"
 
 make info

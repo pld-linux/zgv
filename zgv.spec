@@ -15,6 +15,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
+# Source0-md5:	b2fcebede049f83854924e5c9f40555a
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
 Patch2:		%{name}-Dkey.patch

@@ -15,7 +15,7 @@ Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Summary(ru):	ëÏÎÓÏÌØÎÁÑ ÐÒÏÇÒÁÍÍÁ ÐÒÏÓÍÏÔÒÁ ÍÎÏÖÅÓÔ×Á ÇÒÁÆÉÞÅÓËÉÈ ÆÏÒÍÁÔÏ×
 Name:		zgv
 Version:	5.8
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Graphics
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
@@ -24,6 +24,8 @@ Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
 Patch2:		%{name}-Dkey.patch
 Patch3:		%{name}-home_etc.patch
+# http://www.svgalib.org/rus/zgv/zgv-5.8-integer-overflow-fix.dif
+Patch4:		%{name}-CAN-2004-0999.patch
 %{?with_sdl:BuildRequires:	SDL-devel}
 BuildRequires:	gawk
 BuildRequires:	libjpeg-devel
@@ -148,6 +150,7 @@ Ten pakiet zawiera interfejs korzystajacy z biblioteki SDL.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %if %{with pcd}
 sed -e 's@#\(PCDDEF=.*\)@\1@' config.mk > config.mk.new

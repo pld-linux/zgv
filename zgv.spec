@@ -17,6 +17,7 @@ BuildRequires:	svgalib-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	zlib-devel
+Prereq:		/usr/sbin/fix-info-dir
 BuildRoot:	/tmp/%{name}-%{version}-root
 Exclusivearch:	%{ix86} alpha
 
@@ -81,12 +82,10 @@ gzip -9nf TODO README README.fonts ChangeLog NEWS doc/sample.zgvrc \
 	$RPM_BUILD_ROOT{%{_infodir}/%{name}*,%{_mandir}/man1/*}
 
 %post
-/sbin/install-info %{_infodir}/%{name}.gz /etc/info-dir
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %preun
-if [ "$1" = "0" ]; then
-        /sbin/install-info --delete %{_infodir}/%{name}.gz /etc/info-dir
-fi
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %clean
 rm -rf $RPM_BUILD_ROOT

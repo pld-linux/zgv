@@ -19,36 +19,48 @@ diff -Nru zgv-5.7/config.mk zgv-5.7.new/config.mk
  
  
  # ------------------- Format-related options ----------------------
---- zgv-5.4/doc/Makefile.orig	Thu Dec 21 04:31:28 2000
-+++ zgv-5.4/doc/Makefile	Mon Jul 16 02:42:05 2001
-@@ -34,8 +34,9 @@
+--- zgv-5.8/doc/Makefile.orig	2004-02-21 18:31:02.000000000 +0100
++++ zgv-5.8/doc/Makefile	2004-04-18 20:47:32.458847040 +0200
+@@ -43,9 +43,10 @@
  else
  install: ../src/install-info
  endif
+-	$(RM) /usr/share/man/man1/zgv.1* /usr/share/info/zgv*
 -	install -m 644 zgv.1 $(MANDIR)
 -	install -m 644 zgv zgv-? $(INFODIR)
 +	install -d $(DESTDIR)$(MANDIR) $(DESTDIR)$(INFODIR)
++	$(RM) $(DESTDIR)/usr/share/man/man1/zgv.1* $(DESTDIR)/usr/share/info/zgv*
 +	install -m 644 zgv.1 $(DESTDIR)$(MANDIR)
 +	install -m 644 zgv zgv-? $(DESTDIR)$(INFODIR)
  # Update info `dir' file.
  # Info always uses a dir file in preference to a dir.gz, so we don't use
  # dir.gz unless it's the only game in town.
---- zgv-5.7/src/Makefile.orig	2003-04-05 21:50:50.000000000 +0200
-+++ zgv-5.7/src/Makefile	2003-08-02 20:50:14.000000000 +0200
-@@ -51,12 +51,12 @@
- 
+--- zgv-5.8/src/Makefile.orig	2004-02-21 17:47:44.000000000 +0100
++++ zgv-5.8/src/Makefile	2004-04-18 20:46:30.692236992 +0200
+@@ -61,16 +61,18 @@
+ # 
  install: all
  	@if [ "$(BACKEND)" = SVGALIB ]; then \
+-	  echo $(RM) /usr/bin/zgv; \
+-	  $(RM) /usr/bin/zgv; \
 -	  echo install -m 4755 -o root -g root -s zgv $(BINDIR); \
 -	  install -m 4755 -o root -g root -s zgv $(BINDIR); \
-+	  echo install -D -m 755 zgv $(DESTDIR)$(BINDIR)/zgv; \
-+	  install -D -m 755 zgv $(DESTDIR)$(BINDIR)/zgv; \
++	  install -d $(DESTDIR)/usr/bin; \
++	  echo $(RM) $(DESTDIR)/usr/bin/zgv; \
++	  $(RM) $(DESTDIR)/usr/bin/zgv; \
++	  echo install -m 755 zgv $(DESTDIR)$(BINDIR); \
++	  install -m 755 zgv $(DESTDIR)$(BINDIR); \
  	fi
  	@if [ "$(BACKEND)" = SDL ]; then \
+-	  echo $(RM) /usr/bin/zgv-sdl; \
+-	  $(RM) /usr/bin/zgv-sdl; \
 -	  echo install -m 755 -s zgv $(BINDIR)/zgv-sdl; \
 -	  install -m 755 -s zgv $(BINDIR)/zgv-sdl; \
-+	  echo install -D -m 755 zgv $(DESTDIR)$(BINDIR)/zgv-sdl; \
-+	  install -D -m 755 zgv $(DESTDIR)$(BINDIR)/zgv-sdl; \
++	  install -d $(DESTDIR)/usr/bin; \
++	  echo $(RM) $(DESTDIR)/usr/bin/zgv-sdl; \
++	  $(RM) $(DESTDIR)/usr/bin/zgv-sdl; \
++	  echo install -m 755 zgv $(DESTDIR)$(BINDIR)/zgv-sdl; \
++	  install -m 755 zgv $(DESTDIR)$(BINDIR)/zgv-sdl; \
  	fi
  
  uninstall:

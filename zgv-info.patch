@@ -19,16 +19,15 @@
  @settitle The zgv manual
  @setchapternewpage odd
  @c %**end of header
-@@ -16,9 +16,10 @@
+@@ -16,9 +16,9 @@
  @c This is `ifinfo' to stop texi2{html,roff} seeing it, as they don't
  @c handle it.
  @ifinfo
 -@dircategory Graphics Utilities
 +@dircategory Graphics Utilities:
  @direntry
--* zgv: (zgv).   A picture viewer for Linux systems with VGA/SVGA.
-+* zgv: (zgv).				A picture viewer for Linux
-+					systems with VGA/SVGA
+-* zgv: (zgv).   A picture viewer for Linux/FreeBSD systems with VGA/SVGA.
++* zgv: (zgv).				Picture viewer for Linux/BSD with (S)VGA
  @end direntry
  @end ifinfo
  

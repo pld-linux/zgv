@@ -7,7 +7,7 @@ Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
 Version:	5.2
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik
@@ -83,6 +83,7 @@ mv -f config.mk.new config.mk
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_sysconfdir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -90,7 +91,12 @@ rm -rf $RPM_BUILD_ROOT
 	MANDIR=%{_mandir}/man1 \
 	INFODIR=%{_infodir}
 
-gzip -9nf TODO README README.fonts ChangeLog NEWS doc/sample.zgvrc
+install doc/sample.zgvrc $RPM_BUILD_ROOT%{_sysconfdir}/zgv.conf
+
+gzip -9nf TODO README README.fonts ChangeLog NEWS
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %post
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
@@ -98,12 +104,10 @@ gzip -9nf TODO README README.fonts ChangeLog NEWS doc/sample.zgvrc
 %postun
 [ ! -x /usr/sbin/fix-info-dir ] || /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files
 %defattr(644,root,root,755)
-%doc {README,README.fonts,ChangeLog,TODO,NEWS,doc/sample.zgvrc}.gz
+%doc {README,README.fonts,ChangeLog,TODO,NEWS}.gz
+%config(noreplace,missingok) %verify(not md5 mtime size) %{_sysconfdir}/zgv.conf
 %attr(755,root,root) %{_bindir}/%{name}
 %{_mandir}/man1/*
 %{_infodir}/*

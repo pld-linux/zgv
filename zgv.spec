@@ -5,7 +5,7 @@
 %bcond_without	sdl	# don't build SDL version
 #
 %ifnarch %{ix86} alpha
-%define	_with_svga 0
+%undefine	with_svga
 %endif
 Summary:	Console viewer for many graphics formats
 Summary(de):	Konsolenbetrachter für viele Grafikformate

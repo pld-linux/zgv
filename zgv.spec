@@ -5,7 +5,7 @@ Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
 Version:	3.3
-Release:	1
+Release:	2
 Copyright:	GPL
 Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
@@ -84,7 +84,7 @@ gzip -9nf TODO README README.fonts ChangeLog NEWS doc/sample.zgvrc \
 %post
 /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
-%preun
+%postun
 /usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
 
 %clean

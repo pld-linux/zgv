@@ -75,11 +75,11 @@ gzip -9nf TODO README README.fonts ChangeLog NEWS doc/sample.zgvrc \
 	$RPM_BUILD_ROOT/usr/{share/info/zgv*,share/man/man1/*}
 
 %post
-/sbin/install-info /usr/share/info/zgv.gz /etc/info-dir
+/sbin/install-info %{_infodir}/zgv.gz /etc/info-dir
 
 %preun
 if [ "$1" = "0" ]; then
-        /sbin/install-info --delete /usr/share/info/zgv.gz /etc/info-dir
+        /sbin/install-info --delete %{_infodir}/zgv.gz /etc/info-dir
 fi
 
 %clean
@@ -91,8 +91,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %attr(4511,root,root) /usr/bin/zgv
 
-/usr/share/man/man1/zgv.1.*
-/usr/share/info/zgv*
+%{_mandir}/man1/zgv.1.*
+%{_infodir}/zgv*
 
 %changelog
 * Mon May 10 1999 Piotr Czerwiñski <pius@pld.org.pl>

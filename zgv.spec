@@ -13,10 +13,10 @@ Source:		ftp://sunsite.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{ve
 Patch0:		zgv-DESTDIR.patch
 Patch1:		zgv-info.patch
 Patch2:		zgv-overflow.patch
-BuildPrereq:	svgalib-devel
-BuildPrereq:	libjpeg-devel
-BuildPrereq:	libpng-devel
-BuildPrereq:	zlib-devel
+BuildRequires:	svgalib-devel
+BuildRequires:	libjpeg-devel
+BuildRequires:	libpng-devel
+BuildRequires:	zlib-devel
 BuildRoot:	/tmp/%{name}-%{version}-root
 Exclusivearch:	%{ix86} alpha
 

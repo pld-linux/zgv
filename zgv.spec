@@ -4,15 +4,14 @@ Summary(fr):	Visualiseur d'image en mode console, pour de nombreux formats graph
 Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
-Version:	3.3
-Release:	2
+Version:	5.0
+Release:	1
 Copyright:	GPL
 Group:		Applications/Graphics
 Group(pl):	Aplikacje/Grafika
-Source:		ftp://sunsite.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
+Source: ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
 Patch0:		zgv-DESTDIR.patch
 Patch1:		zgv-info.patch
-Patch2:		zgv-overflow.patch
 BuildRequires:	svgalib-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
@@ -59,7 +58,6 @@ yeni PNG formatlarýndaki resimleri görüntüleyebilmektedir.
 %setup  -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 

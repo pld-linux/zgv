@@ -161,7 +161,8 @@ mv -f config.mk.new config.mk
 %if %{with svga}
 %{__make} all \
 	OPTFLAGS="%{rpmcflags}" \
-	RGB_DB="/usr/X11R6/lib/X11/rgb.txt"
+	RGB_DB="/usr/X11R6/lib/X11/rgb.txt" \
+	RCFILE="%{_sysconfdir}/zgv.conf"
 
 %{?with_sdl:mv -f src/zgv zgv-svga}
 %{?with_sdl:%{__make} clean}
@@ -171,7 +172,8 @@ mv -f config.mk.new config.mk
 %{__make} all \
 	OPTFLAGS="%{rpmcflags}" \
 	BACKEND=SDL \
-	RGB_DB="/usr/X11R6/lib/X11/rgb.txt"
+	RGB_DB="/usr/X11R6/lib/X11/rgb.txt" \
+	RCFILE="%{_sysconfdir}/zgv.conf"
 %endif
 
 %{__make} info

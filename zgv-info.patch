@@ -6,11 +6,11 @@ diff -Nru zgv-3.2/doc/zgv.texi zgv-3.2.new/doc/zgv.texi
  @c handle it.
  @ifinfo
 -@dircategory Graphics Utilities
-+@dircategory Graphics Utilities:
++@dircategory Graphics utilities:
  @direntry
 -* Zgv: (zgv).   A picture viewer for Linux systems with VGA/SVGA.
 +* Zgv: (zgv)				A picture viewer for Linux
-+					systems with VGA/SVGA.
++					systems with VGA/SVGA
  @end direntry
  @end ifinfo
  

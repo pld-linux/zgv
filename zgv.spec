@@ -61,16 +61,16 @@ belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa
 
 %build
 
-make all OPTFLAGS="$RPM_OPT_FLAGS" \
+%{__make} all OPTFLAGS="$RPM_OPT_FLAGS" \
 	INCDIRS="-I%{_includedir}" \
 	RGB_DB="%{_prefix}/X11R6/lib/X11/rgb.txt"
 
-make info
+%{__make} info
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-make DESTDIR=$RPM_BUILD_ROOT \
+%{__make} DESTDIR=$RPM_BUILD_ROOT \
 	BINDIR=%{_bindir} \
 	MANDIR=%{_mandir}/man1 \
 	INFODIR=%{_infodir} \

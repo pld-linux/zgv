@@ -4,9 +4,6 @@
 %bcond_without	svga	# don't build svgalib version
 %bcond_without	sdl	# don't build SDL version
 #
-%ifnarch %{ix86} alpha
-%undefine	with_svga
-%endif
 Summary:	Console viewer for many graphics formats
 Summary(de):	Konsolenbetrachter für viele Grafikformate
 Summary(es):	Visualizador para muchos formatos de gráficos (consola)
@@ -36,7 +33,7 @@ BuildRequires:	libtiff-devel
 BuildRequires:	texinfo
 BuildRequires:	zlib-devel
 %{?with_pcd:BuildRequires:	libpcd-devel}
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %{!?with_sdl:%{!?with_svga:%{error: at least one version must be enabled} exit 1}}
@@ -47,7 +44,7 @@ CompuServe, with the exceptions listed in the RESTRICTIONS section. It
 is also capable of displaying JPEG/JFIF files using the Independant
 JPEG Group's JPEG software, PBM/PGM/PPM files as used by pbmplus and
 netpbm, Microsoft Windows and OS/2 BMP files, Targa (TGA) and TIFF
-files, the new PNG format%{?_with_pcd: and PhotoCD}.
+files, the new PNG format%{?with_pcd: and PhotoCD}.
 
 This package contains svgalib-based interface.
 
@@ -79,7 +76,7 @@ format PNG.
 %description -l pl
 Zgv potrafi wy¶wietlaæ obrazki w formacie CompuServe GIF (z wyj±tkami
 opisanymi w rozdziale RESTRICTIONS), JPEG/JFIF, PBM/PGM/PPM, BMP (z
-Microsoft Windows i OS/2), Targa (TGA), TIFF, PNG%{?_with_pcd: i PhotoCD}.
+Microsoft Windows i OS/2), Targa (TGA), TIFF, PNG%{?with_pcd: i PhotoCD}.
 
 Ten pakiet zawiera interfejs korzystajacy z biblioteki svgalib.
 
@@ -126,7 +123,7 @@ Pakiet wspólny dla obu interfejsów ZGV.
 Summary:	SDL viewer for many graphics formats
 Summary(pl):	Oparta na SDL przegl±darka obrazków w ró¿nych formatach
 Group:		Applications/Graphics
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{version}-%{release}
 
 %description sdl
 Zgv is a picture viewer capable of displaying GIF files as defined by
@@ -134,14 +131,14 @@ CompuServe, with the exceptions listed in the RESTRICTIONS section. It
 is also capable of displaying JPEG/JFIF files using the Independant
 JPEG Group's JPEG software, PBM/PGM/PPM files as used by pbmplus and
 netpbm, Microsoft Windows and OS/2 BMP files, Targa (TGA) and TIFF
-files, the new PNG format%{?_with_pcd: and PhotoCD}.
+files, the new PNG format%{?with_pcd: and PhotoCD}.
 
 This package contains SDL-based interfeace.
 
 %description sdl -l pl
 Zgv potrafi wy¶wietlaæ obrazki w formacie CompuServe GIF (z wyj±tkami
 opisanymi w rozdziale RESTRICTIONS), JPEG/JFIF, PBM/PGM/PPM, BMP (z
-Microsoft Windows i OS/2), Targa (TGA), TIFF, PNG%{?_with_pcd: i PhotoCD}.
+Microsoft Windows i OS/2), Targa (TGA), TIFF, PNG%{?with_pcd: i PhotoCD}.
 
 Ten pakiet zawiera interfejs korzystajacy z biblioteki SDL.
 

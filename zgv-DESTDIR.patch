@@ -10,26 +10,23 @@ diff -Nru zgv-5.2/config.mk zgv-5.2.new/config.mk
  
  
  # ------------------- Format-related options ----------------------
-diff -Nru zgv-5.2/doc/Makefile zgv-5.2.new/doc/Makefile
---- zgv-5.2/doc/Makefile	Sat Nov  4 15:55:35 2000
-+++ zgv-5.2.new/doc/Makefile	Sat Nov  4 15:54:39 2000
-@@ -34,8 +34,10 @@
+--- zgv-5.4/doc/Makefile.orig	Thu Dec 21 04:31:28 2000
++++ zgv-5.4/doc/Makefile	Mon Jul 16 02:42:05 2001
+@@ -34,8 +34,9 @@
  else
  install: ../src/install-info
  endif
--	install -m 444 zgv.1 $(MANDIR)
--	install -m 444 zgv zgv-? $(INFODIR)
-+	mkdir -p $(DESTDIR)$(MANDIR)
-+	mkdir -p $(DESTDIR)$(INFODIR)
-+	install zgv.1 $(DESTDIR)$(MANDIR)
-+	install zgv zgv-? $(DESTDIR)$(INFODIR)
+-	install -m 644 zgv.1 $(MANDIR)
+-	install -m 644 zgv zgv-? $(INFODIR)
++	install -d $(DESTDIR)$(MANDIR) $(DESTDIR)$(INFODIR)
++	install -m 644 zgv.1 $(DESTDIR)$(MANDIR)
++	install -m 644 zgv zgv-? $(DESTDIR)$(INFODIR)
  # Update info `dir' file.
  # Info always uses a dir file in preference to a dir.gz, so we don't use
  # dir.gz unless it's the only game in town.
-diff -Nru zgv-5.2/src/Makefile zgv-5.2.new/src/Makefile
---- zgv-5.2/src/Makefile	Sat Nov  4 15:55:35 2000
-+++ zgv-5.2.new/src/Makefile	Sat Nov  4 15:57:00 2000
-@@ -13,11 +13,12 @@
+--- zgv-5.4/src/Makefile.orig	Fri Mar 16 18:12:55 2001
++++ zgv-5.4/src/Makefile	Mon Jul 16 02:45:22 2001
+@@ -13,10 +13,11 @@
  CC=gcc
  
  WARNOPTS = -Wall
@@ -37,18 +34,17 @@ diff -Nru zgv-5.2/src/Makefile zgv-5.2.new/src/Makefile
  
  CFLAGS = $(WARNOPTS) $(PCDDEF) \
  	-DRGB_DB_FILE=\"$(RGB_DB)\" \
- 	-DTIFFTOPNM=\"$(TIFFTOPNM)\" \
 -	-O2 -fomit-frame-pointer -finline-functions
 +	$(OPTFLAGS)
  
- ZGV_LIBS = -lvgagl -lvga -ljpeg -lpng -lz -lm
+ ZGV_LIBS = -lvgagl -lvga -ljpeg -lpng -ltiff -lz -lm
  ifeq ($(PCDDEF),-DPCD_SUPPORT)
-@@ -53,7 +54,8 @@
+@@ -52,7 +52,8 @@
  	$(CC) $(INFODIRDEF) -o install-info install-info.c
  
  install: all
--	install -m 4511 -o root -g root -s zgv $(BINDIR)
-+	mkdir -p $(DESTDIR)$(BINDIR)
+-	install -m 4755 -o root -g root -s zgv $(BINDIR)
++	install -d $(DESTDIR)$(BINDIR)
 +	install zgv $(DESTDIR)$(BINDIR)
  
  uninstall:

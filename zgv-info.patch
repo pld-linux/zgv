@@ -1,16 +1,14 @@
-diff -Nru zgv-5.2/doc/Makefile zgv-5.2.new/doc/Makefile
---- zgv-5.2/doc/Makefile	Sat Nov  4 15:58:06 2000
-+++ zgv-5.2.new/doc/Makefile	Sat Nov  4 16:00:31 2000
-@@ -37,7 +37,7 @@
- 	mkdir -p $(DESTDIR)$(MANDIR)
- 	mkdir -p $(DESTDIR)$(INFODIR)
- 	install zgv.1 $(DESTDIR)$(MANDIR)
--	install zgv zgv-? $(DESTDIR)$(INFODIR)
-+	install zgv.info-* $(DESTDIR)$(INFODIR)
+--- zgv-5.4/doc/Makefile.orig	Mon Jul 16 02:47:50 2001
++++ zgv-5.4/doc/Makefile	Mon Jul 16 02:48:44 2001
+@@ -36,7 +36,7 @@
+ endif
+ 	install -d $(DESTDIR)$(MANDIR) $(DESTDIR)$(INFODIR)
+ 	install -m 644 zgv.1 $(DESTDIR)$(MANDIR)
+-	install -m 644 zgv zgv-? $(DESTDIR)$(INFODIR)
++	install -m 644 zgv.info* $(DESTDIR)$(INFODIR)
  # Update info `dir' file.
  # Info always uses a dir file in preference to a dir.gz, so we don't use
  # dir.gz unless it's the only game in town.
-diff -Nru zgv-5.2/doc/zgv.texi zgv-5.2.new/doc/zgv.texi
 --- zgv-5.2/doc/zgv.texi	Tue Oct 10 06:26:10 2000
 +++ zgv-5.2.new/doc/zgv.texi	Sat Nov  4 15:59:30 2000
 @@ -1,6 +1,6 @@

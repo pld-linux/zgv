@@ -7,7 +7,7 @@
 %ifnarch %{ix86} alpha
 %define	_without_svga 1
 %endif
-Summary:	console viewer for many graphics formats
+Summary:	Console viewer for many graphics formats
 Summary(de):	Konsolenbetrachter für viele Grafikformate
 Summary(es):	Visualizador para muchos formatos de gráficos (consola)
 Summary(fr):	Visualiseur d'image en mode console, pour de nombreux formats graphiques

@@ -8,8 +8,8 @@ Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(pt_BR):	Visualizador para muitos formatos de gráficos (console)
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
-Version:	5.4
-Release:	3
+Version:	5.5
+Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik
@@ -17,7 +17,6 @@ Group(pl):	Aplikacje/Grafika
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
-Patch2:		%{name}-bmp-fixes.patch
 BuildRequires:	gawk
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
@@ -35,9 +34,8 @@ Zgv is a picture viewer capable of displaying GIF files as defined by
 CompuServe, with the exceptions listed in the RESTRICTIONS section. It
 is also capable of displaying JPEG/JFIF files using the Independant
 JPEG Group's JPEG software, PBM/PGM/PPM files as used by pbmplus and
-netpbm, Microsoft Windows and OS/2 BMP files, Targa (TGA) files, the
-new PNG format%{?_with_pcd: and PhotoCD}. It can display TIFF files if
-you install netpbm-progs (tifftopnm).
+netpbm, Microsoft Windows and OS/2 BMP files, Targa (TGA) and TIFF
+files, the new PNG format%{?_with_pcd: and PhotoCD}.
 
 %description -l de
 zgv ist ein Bild-Viewer, der GIF-Dateien nach der
@@ -67,9 +65,7 @@ format PNG.
 %description -l pl
 Zgv potrafi wy¶wietlaæ obrazki w formacie CompuServe GIF (z wyj±tkami
 opisanymi w rozdziale RESTRICTIONS), JPEG/JFIF, PBM/PGM/PPM, BMP (z
-Microsoft Windows i OS/2), Targa (TGA), PNG%{?_with_pcd: i PhotoCD}.
-Mo¿e te¿ wy¶wietlaæ pliki TIFF po zainstalowaniu pakietu netpbm-progs
-(program tifftopnm).
+Microsoft Windows i OS/2), Targa (TGA), TIFF, PNG%{?_with_pcd: i PhotoCD}.
 
 %description -l pt_BR
 Zgv é um visualizador de imagens capaz de mostrar arquivos tipo "GIF"
@@ -88,7 +84,6 @@ belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa
 %setup  -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %if %{?_with_pcd:1}%{!?_with_pcd:0}
 sed -e 's@#\(PCDDEF=.*\)@\1@' config.mk > config.mk.new
@@ -114,7 +109,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 
 install doc/sample.zgvrc $RPM_BUILD_ROOT%{_sysconfdir}/zgv.conf
 
-gzip -9nf TODO README README.fonts ChangeLog NEWS
+gzip -9nf AUTHORS ChangeLog NEWS README* TODO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -127,7 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {README,README.fonts,ChangeLog,TODO,NEWS}.gz
+%doc *.gz
 %config(noreplace,missingok) %verify(not md5 mtime size) %{_sysconfdir}/zgv.conf
 %attr(755,root,root) %{_bindir}/%{name}
 %{_mandir}/man1/*

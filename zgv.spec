@@ -64,7 +64,8 @@ format PNG.
 %description -l pl
 Zgv potrafi wy¶wietlaæ obrazki w formacie CompuServe GIF (z wyj±tkami
 opisanymi w rozdziale RESTRICTIONS), JPEG/JFIF, PBM/PGM/PPM, BMP (z
-Microsoft Windows i OS/2), Targa (TGA), TIFF, PNG%{?_with_pcd: i PhotoCD}.
+Microsoft Windows i OS/2), Targa (TGA), TIFF, PNG%{?_with_pcd: i
+PhotoCD}.
 
 %description -l pt_BR
 Zgv é um visualizador de imagens capaz de mostrar arquivos tipo "GIF"

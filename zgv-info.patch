@@ -9,7 +9,7 @@ diff -Nru zgv-3.2/doc/zgv.texi zgv-3.2.new/doc/zgv.texi
 +@dircategory Graphics utilities:
  @direntry
 -* Zgv: (zgv).   A picture viewer for Linux systems with VGA/SVGA.
-+* Zgv: (zgv)				A picture viewer for Linux
++* Zgv: (zgv).				A picture viewer for Linux
 +					systems with VGA/SVGA
  @end direntry
  @end ifinfo

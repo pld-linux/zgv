@@ -63,7 +63,7 @@ belirtilenler dýþýnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa
 
 %build
 
-%{__make} all OPTFLAGS="%{?debug:-O -g}%{!?debug:$RPM_OPT_FLAGS}" \
+%{__make} all OPTFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS}" \
 	INCDIRS="-I%{_includedir}" \
 	RGB_DB="%{_prefix}/X11R6/lib/X11/rgb.txt"
 

@@ -19,6 +19,7 @@ Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
 BuildRequires:	gawk
 BuildRequires:	libjpeg-devel
+BuildRequires:	libtiff-devel
 BuildRequires:	libpng >= 1.0.8
 BuildRequires:	svgalib-devel
 BuildRequires:	texinfo

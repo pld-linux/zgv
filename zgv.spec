@@ -4,8 +4,8 @@ Summary(fr):	Visualiseur d'image en mode console, pour de nombreux formats graph
 Summary(pl):	Konsolowa przegl±darka obrazków w ró¿nych formatach
 Summary(tr):	Birçok resim formatýný görüntüleyebilen konsol aracý
 Name:		zgv
-Version:	5.1
-Release:	4
+Version:	5.2
+Release:	1
 License:	GPL
 Group:		Applications/Graphics
 Group(de):	Applikationen/Grafik

@@ -99,15 +99,3 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_mandir}/man1/*
 %{_infodir}/*
-
-%changelog
-* Mon May 31 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [3.2-4]
-- fixed overflow security bug in zgv (patch by <elephant@szczecin.top.pl>).
-
-* Thu May 20 1999 Piotr Czerwiñski <pius@pld.org.pl>
-  [3.2-3]
-- package is FHS 2.0 compliant,
-- spec file based on RH version; rewritten for PLD use by me, 
-  Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  and Marcin 'Qrczak' Kowalczyk <qrczak@knm.org.pl>.

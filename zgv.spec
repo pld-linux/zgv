@@ -28,7 +28,7 @@ BuildRequires:	zlib-devel
 %{?_with_pcd:BuildRequires: libpcd-devel}
 Requires:	/usr/X11R6/lib/X11/rgb.txt
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Exclusivearch:	%{ix86} alpha
+Exclusivearch:	%{ix86} alpha ppc
 
 %description
 Zgv is a picture viewer capable of displaying GIF files as defined by

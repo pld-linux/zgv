@@ -6,10 +6,12 @@ Summary(es):	Visualizador para muchos formatos de grАficos (consola)
 Summary(fr):	Visualiseur d'image en mode console, pour de nombreux formats graphiques
 Summary(pl):	Konsolowa przegl╠darka obrazkСw w rС©nych formatach
 Summary(pt_BR):	Visualizador para muitos formatos de grАficos (console)
+Summary(uk):	Консольна програма перегляду багатьох граф╕чних формат╕в
 Summary(tr):	BirГok resim formatЩnЩ gЖrЭntЭleyebilen konsol aracЩ
+Summary(ru):	Консольная программа просмотра множества графических форматов
 Name:		zgv
 Version:	5.5
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Graphics
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
@@ -75,10 +77,24 @@ arquivos PBM/PGM/PPM como os usados pela pbmplus e netpbm, arquivos
 Microsoft Windows e OS/2 BMP, arquivos Targa (TGA), e o novo formato
 PNG.
 
+%description -l ru
+Zgv - это программа для просмотра изображений, которая поддерживает
+показ файлов в форматах GIF, JPEG/JFIF, PNG, PBM/PGM/PPM, BMP, TGA,
+PCX и MRF на VGA и SVGA дисплеях. Zgv может также показывать
+мини-копии изображений (thumbnails). Zgv основывается на svgalib,
+поэтому для использования zgv вам необходимо ее установить.
+
 %description -l tr
 Zgv, konsol ortamЩndan CompuServe'in GIF formatЩ (RESTRICTIONS ile
 belirtilenler dЩЧЩnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa
 (TGA) ve yeni PNG formatlarЩndaki resimleri gЖrЭntЭleyebilmektedir.
+
+%description -l uk
+Zgv - це програма для перегляду зображень, яка п╕дтриму╓ показ файл╕в
+в форматах GIF, JPEG/JFIF, PNG, PBM/PGM/PPM, BMP, TGA, PCX ╕ MRF на
+VGA та SVGA дисплеях. Zgv може також показувати м╕н╕-коп╕╖ зображень
+(thumbnails). Zgv базу╓ться на svgalib, тому для використання zgv вам
+необх╕дно ╖╖ встановити,
 
 %prep
 %setup  -q

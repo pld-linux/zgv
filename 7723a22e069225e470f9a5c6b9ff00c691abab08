@@ -1,0 +1,2 @@
+- updated to 5.9, removed obsolete CAN-2004-0999 patch
+  [resolves CVE-2006-1060?]

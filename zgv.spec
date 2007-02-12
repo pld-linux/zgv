@@ -5,14 +5,14 @@
 %bcond_without	sdl	# don't build SDL version
 #
 Summary:	Console viewer for many graphics formats
-Summary(de.UTF-8):   Konsolenbetrachter für viele Grafikformate
-Summary(es.UTF-8):   Visualizador para muchos formatos de gráficos (consola)
-Summary(fr.UTF-8):   Visualiseur d'image en mode console, pour de nombreux formats graphiques
-Summary(pl.UTF-8):   Konsolowa przeglądarka obrazków w różnych formatach
-Summary(pt_BR.UTF-8):   Visualizador para muitos formatos de gráficos (console)
-Summary(uk.UTF-8):   Консольна програма перегляду багатьох графічних форматів
-Summary(tr.UTF-8):   Birçok resim formatını görüntüleyebilen konsol aracı
-Summary(ru.UTF-8):   Консольная программа просмотра множества графических форматов
+Summary(de.UTF-8):	Konsolenbetrachter für viele Grafikformate
+Summary(es.UTF-8):	Visualizador para muchos formatos de gráficos (consola)
+Summary(fr.UTF-8):	Visualiseur d'image en mode console, pour de nombreux formats graphiques
+Summary(pl.UTF-8):	Konsolowa przeglądarka obrazków w różnych formatach
+Summary(pt_BR.UTF-8):	Visualizador para muitos formatos de gráficos (console)
+Summary(uk.UTF-8):	Консольна програма перегляду багатьох графічних форматів
+Summary(tr.UTF-8):	Birçok resim formatını görüntüleyebilen konsol aracı
+Summary(ru.UTF-8):	Консольная программа просмотра множества графических форматов
 Name:		zgv
 Version:	5.9
 Release:	2
@@ -109,7 +109,7 @@ VGA та SVGA дисплеях. Zgv може також показувати м�
 
 %package common
 Summary:	Common files for both ZGV frontends
-Summary(pl.UTF-8):   Pakiet wspólny dla obu interfejsów ZGV
+Summary(pl.UTF-8):	Pakiet wspólny dla obu interfejsów ZGV
 Group:		Applications/Graphics
 Requires:	/usr/X11R6/lib/X11/rgb.txt
 
@@ -121,7 +121,7 @@ Pakiet wspólny dla obu interfejsów ZGV.
 
 %package sdl
 Summary:	SDL viewer for many graphics formats
-Summary(pl.UTF-8):   Oparta na SDL przeglądarka obrazków w różnych formatach
+Summary(pl.UTF-8):	Oparta na SDL przeglądarka obrazków w różnych formatach
 Group:		Applications/Graphics
 Requires:	%{name}-common = %{version}-%{release}
 

@@ -5,14 +5,14 @@
 %bcond_without	sdl	# don't build SDL version
 #
 Summary:	Console viewer for many graphics formats
-Summary(de):	Konsolenbetrachter fЭr viele Grafikformate
-Summary(es):	Visualizador para muchos formatos de grАficos (consola)
-Summary(fr):	Visualiseur d'image en mode console, pour de nombreux formats graphiques
-Summary(pl):	Konsolowa przegl╠darka obrazkСw w rС©nych formatach
-Summary(pt_BR):	Visualizador para muitos formatos de grАficos (console)
-Summary(uk):	Консольна програма перегляду багатьох граф╕чних формат╕в
-Summary(tr):	BirГok resim formatЩnЩ gЖrЭntЭleyebilen konsol aracЩ
-Summary(ru):	Консольная программа просмотра множества графических форматов
+Summary(de.UTF-8):   Konsolenbetrachter fц╪r viele Grafikformate
+Summary(es.UTF-8):   Visualizador para muchos formatos de grц║ficos (consola)
+Summary(fr.UTF-8):   Visualiseur d'image en mode console, pour de nombreux formats graphiques
+Summary(pl.UTF-8):   Konsolowa przeglд┘darka obrazkцЁw w rцЁе╪nych formatach
+Summary(pt_BR.UTF-8):   Visualizador para muitos formatos de grц║ficos (console)
+Summary(uk.UTF-8):   п п╬п╫я│п╬п╩я▄п╫п╟ п©я─п╬пЁя─п╟п╪п╟ п©п╣я─п╣пЁп╩я▐п╢я┐ п╠п╟пЁп╟я┌я▄п╬я┘ пЁя─п╟я└я√я┤п╫п╦я┘ я└п╬я─п╪п╟я┌я√п╡
+Summary(tr.UTF-8):   Birц╖ok resim formatд╠nд╠ gц╤rц╪ntц╪leyebilen konsol aracд╠
+Summary(ru.UTF-8):   п п╬п╫я│п╬п╩я▄п╫п╟я▐ п©я─п╬пЁя─п╟п╪п╪п╟ п©я─п╬я│п╪п╬я┌я─п╟ п╪п╫п╬п╤п╣я│я┌п╡п╟ пЁя─п╟я└п╦я┤п╣я│п╨п╦я┘ я└п╬я─п╪п╟я┌п╬п╡
 Name:		zgv
 Version:	5.9
 Release:	2
@@ -48,80 +48,80 @@ files, the new PNG format%{?with_pcd: and PhotoCD}.
 
 This package contains svgalib-based interface.
 
-%description -l de
+%description -l de.UTF-8
 zgv ist ein Bild-Viewer, der GIF-Dateien nach der
 CompuServe-Definition anzeigen kann, abgesehen von den Ausnahmen im
 Teil RESTRICTIONS. Ferner kann er JPEG/JFIF-Dateien unter Verwendung
-der JPEG-Software der unabhДngigen JPEG-Group, PBM/PGM/PPM-Dateien wie
+der JPEG-Software der unabhц╓ngigen JPEG-Group, PBM/PGM/PPM-Dateien wie
 sie pbmplus und netpbm benutzen, sowie Microsoft Windows und OS/2
 BMB-Dateien, Targa (TGA) und das neue PNG-Format anzeigen.
 
-%description -l es
-Zgv es un visualizador de imАgenes capaz de enseЯar archivos tipo
-"GIF" como las definidas por la CompuServe. TambiИn es capaz de
-enseЯar archivos JPEG/JFIF usando "Independant JPEG Group JPEG
+%description -l es.UTF-8
+Zgv es un visualizador de imц║genes capaz de enseц╠ar archivos tipo
+"GIF" como las definidas por la CompuServe. Tambiц╘n es capaz de
+enseц╠ar archivos JPEG/JFIF usando "Independant JPEG Group JPEG
 software", archivos PBM/PGM/PPM como los usados por la pbmplus y
 netpbm, archivos Microsoft Windows y OS/2 BMP, archivos Targa (TGA), y
 el nuevo formato PNG.
 
-%description -l fr
+%description -l fr.UTF-8
 Zgv est un visualisateur de fichiers GIF tels que ceux qui sont
-dИfinis par CompuServe, avec les exceptions listИes dans la section
-RESTRICTIONS. Il peut aussi afficher les fichiers JPEG/JTIF utilisИs
+dц╘finis par CompuServe, avec les exceptions listц╘es dans la section
+RESTRICTIONS. Il peut aussi afficher les fichiers JPEG/JTIF utilisц╘s
 par le logiciel JPEG de l'Independant JPEG Group, les fichiers
-PBM/PGM/PPM utilisИs par pbmplus et netpbm, les fichiers BMP de
+PBM/PGM/PPM utilisц╘s par pbmplus et netpbm, les fichiers BMP de
 Microsoft Windows et OS/2, les fichiers Targa (TGA) et le nouveau
 format PNG.
 
-%description -l pl
-Zgv potrafi wy╤wietlaФ obrazki w formacie CompuServe GIF (z wyj╠tkami
+%description -l pl.UTF-8
+Zgv potrafi wyе⌡wietlaд┤ obrazki w formacie CompuServe GIF (z wyjд┘tkami
 opisanymi w rozdziale RESTRICTIONS), JPEG/JFIF, PBM/PGM/PPM, BMP (z
 Microsoft Windows i OS/2), Targa (TGA), TIFF, PNG%{?with_pcd: i PhotoCD}.
 
 Ten pakiet zawiera interfejs korzystajacy z biblioteki svgalib.
 
-%description -l pt_BR
-Zgv И um visualizador de imagens capaz de mostrar arquivos tipo "GIF"
-como as definidas pela CompuServe. Ele tambИm И capaz de mostrar
+%description -l pt_BR.UTF-8
+Zgv ц╘ um visualizador de imagens capaz de mostrar arquivos tipo "GIF"
+como as definidas pela CompuServe. Ele tambц╘m ц╘ capaz de mostrar
 arquivos JPEG/JFIF usando o "Independent JPEG Group JPEG software",
 arquivos PBM/PGM/PPM como os usados pela pbmplus e netpbm, arquivos
 Microsoft Windows e OS/2 BMP, arquivos Targa (TGA), e o novo formato
 PNG.
 
-%description -l ru
-Zgv - это программа для просмотра изображений, которая поддерживает
-показ файлов в форматах GIF, JPEG/JFIF, PNG, PBM/PGM/PPM, BMP, TGA,
-PCX и MRF на VGA и SVGA дисплеях. Zgv может также показывать
-мини-копии изображений (thumbnails). Zgv основывается на svgalib,
-поэтому для использования zgv вам необходимо ее установить.
+%description -l ru.UTF-8
+Zgv - я█я┌п╬ п©я─п╬пЁя─п╟п╪п╪п╟ п╢п╩я▐ п©я─п╬я│п╪п╬я┌я─п╟ п╦п╥п╬п╠я─п╟п╤п╣п╫п╦п╧, п╨п╬я┌п╬я─п╟я▐ п©п╬п╢п╢п╣я─п╤п╦п╡п╟п╣я┌
+п©п╬п╨п╟п╥ я└п╟п╧п╩п╬п╡ п╡ я└п╬я─п╪п╟я┌п╟я┘ GIF, JPEG/JFIF, PNG, PBM/PGM/PPM, BMP, TGA,
+PCX п╦ MRF п╫п╟ VGA п╦ SVGA п╢п╦я│п©п╩п╣я▐я┘. Zgv п╪п╬п╤п╣я┌ я┌п╟п╨п╤п╣ п©п╬п╨п╟п╥я▀п╡п╟я┌я▄
+п╪п╦п╫п╦-п╨п╬п©п╦п╦ п╦п╥п╬п╠я─п╟п╤п╣п╫п╦п╧ (thumbnails). Zgv п╬я│п╫п╬п╡я▀п╡п╟п╣я┌я│я▐ п╫п╟ svgalib,
+п©п╬я█я┌п╬п╪я┐ п╢п╩я▐ п╦я│п©п╬п╩я▄п╥п╬п╡п╟п╫п╦я▐ zgv п╡п╟п╪ п╫п╣п╬п╠я┘п╬п╢п╦п╪п╬ п╣п╣ я┐я│я┌п╟п╫п╬п╡п╦я┌я▄.
 
-%description -l tr
-Zgv, konsol ortamЩndan CompuServe'in GIF formatЩ (RESTRICTIONS ile
-belirtilenler dЩЧЩnda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa
-(TGA) ve yeni PNG formatlarЩndaki resimleri gЖrЭntЭleyebilmektedir.
+%description -l tr.UTF-8
+Zgv, konsol ortamд╠ndan CompuServe'in GIF formatд╠ (RESTRICTIONS ile
+belirtilenler dд╠е÷д╠nda), JPEG/JFIF, PGM/PBM/PPM, Bitmap (BMP), Targa
+(TGA) ve yeni PNG formatlarд╠ndaki resimleri gц╤rц╪ntц╪leyebilmektedir.
 
-%description -l uk
-Zgv - це програма для перегляду зображень, яка п╕дтриму╓ показ файл╕в
-в форматах GIF, JPEG/JFIF, PNG, PBM/PGM/PPM, BMP, TGA, PCX ╕ MRF на
-VGA та SVGA дисплеях. Zgv може також показувати м╕н╕-коп╕╖ зображень
-(thumbnails). Zgv базу╓ться на svgalib, тому для використання zgv вам
-необх╕дно ╖╖ встановити,
+%description -l uk.UTF-8
+Zgv - я├п╣ п©я─п╬пЁя─п╟п╪п╟ п╢п╩я▐ п©п╣я─п╣пЁп╩я▐п╢я┐ п╥п╬п╠я─п╟п╤п╣п╫я▄, я▐п╨п╟ п©я√п╢я┌я─п╦п╪я┐я■ п©п╬п╨п╟п╥ я└п╟п╧п╩я√п╡
+п╡ я└п╬я─п╪п╟я┌п╟я┘ GIF, JPEG/JFIF, PNG, PBM/PGM/PPM, BMP, TGA, PCX я√ MRF п╫п╟
+VGA я┌п╟ SVGA п╢п╦я│п©п╩п╣я▐я┘. Zgv п╪п╬п╤п╣ я┌п╟п╨п╬п╤ п©п╬п╨п╟п╥я┐п╡п╟я┌п╦ п╪я√п╫я√-п╨п╬п©я√я≈ п╥п╬п╠я─п╟п╤п╣п╫я▄
+(thumbnails). Zgv п╠п╟п╥я┐я■я┌я▄я│я▐ п╫п╟ svgalib, я┌п╬п╪я┐ п╢п╩я▐ п╡п╦п╨п╬я─п╦я│я┌п╟п╫п╫я▐ zgv п╡п╟п╪
+п╫п╣п╬п╠я┘я√п╢п╫п╬ я≈я≈ п╡я│я┌п╟п╫п╬п╡п╦я┌п╦,
 
 %package common
 Summary:	Common files for both ZGV frontends
-Summary(pl):	Pakiet wspСlny dla obu interfejsСw ZGV
+Summary(pl.UTF-8):   Pakiet wspцЁlny dla obu interfejsцЁw ZGV
 Group:		Applications/Graphics
 Requires:	/usr/X11R6/lib/X11/rgb.txt
 
 %description common
 Common files for both ZGV frontends.
 
-%description common -l pl
-Pakiet wspСlny dla obu interfejsСw ZGV.
+%description common -l pl.UTF-8
+Pakiet wspцЁlny dla obu interfejsцЁw ZGV.
 
 %package sdl
 Summary:	SDL viewer for many graphics formats
-Summary(pl):	Oparta na SDL przegl╠darka obrazkСw w rС©nych formatach
+Summary(pl.UTF-8):   Oparta na SDL przeglд┘darka obrazkцЁw w rцЁе╪nych formatach
 Group:		Applications/Graphics
 Requires:	%{name}-common = %{version}-%{release}
 
@@ -135,8 +135,8 @@ files, the new PNG format%{?with_pcd: and PhotoCD}.
 
 This package contains SDL-based interfeace.
 
-%description sdl -l pl
-Zgv potrafi wy╤wietlaФ obrazki w formacie CompuServe GIF (z wyj╠tkami
+%description sdl -l pl.UTF-8
+Zgv potrafi wyе⌡wietlaд┤ obrazki w formacie CompuServe GIF (z wyjд┘tkami
 opisanymi w rozdziale RESTRICTIONS), JPEG/JFIF, PBM/PGM/PPM, BMP (z
 Microsoft Windows i OS/2), Targa (TGA), TIFF, PNG%{?with_pcd: i PhotoCD}.
 

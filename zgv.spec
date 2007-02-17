@@ -15,7 +15,7 @@ Summary(tr.UTF-8):	Birçok resim formatını görüntüleyebilen konsol aracı
 Summary(ru.UTF-8):	Консольная программа просмотра множества графических форматов
 Name:		zgv
 Version:	5.9
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Graphics
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
@@ -111,7 +111,7 @@ VGA та SVGA дисплеях. Zgv може також показувати м�
 Summary:	Common files for both ZGV frontends
 Summary(pl.UTF-8):	Pakiet wspólny dla obu interfejsów ZGV
 Group:		Applications/Graphics
-Requires:	/usr/X11R6/lib/X11/rgb.txt
+Requires:	/usr/share/X11/rgb.txt
 
 %description common
 Common files for both ZGV frontends.
@@ -158,7 +158,7 @@ mv -f config.mk.new config.mk
 %if %{with svga}
 %{__make} all \
 	OPTFLAGS="%{rpmcflags}" \
-	RGB_DB="/usr/X11R6/lib/X11/rgb.txt" \
+	RGB_DB="/usr/share/X11/rgb.txt" \
 	RCFILE="%{_sysconfdir}/zgv.conf" \
 	CC="%{__cc}"
 
@@ -170,7 +170,7 @@ mv -f config.mk.new config.mk
 %{__make} all \
 	OPTFLAGS="%{rpmcflags}" \
 	BACKEND=SDL \
-	RGB_DB="/usr/X11R6/lib/X11/rgb.txt" \
+	RGB_DB="/usr/share/X11/rgb.txt" \
 	RCFILE="%{_sysconfdir}/zgv.conf" \
 	CC="%{__cc}"
 %endif

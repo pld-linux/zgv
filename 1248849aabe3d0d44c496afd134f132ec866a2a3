@@ -1,0 +1,2 @@
+- updated to 5.8, updated DESTDIR,info patches, removed obsolete gcc33 patch
+[fixes CVE-2006-1060]

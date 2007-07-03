@@ -24,6 +24,7 @@ Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-info.patch
 Patch2:		%{name}-Dkey.patch
 Patch3:		%{name}-home_etc.patch
+Patch4:		%{name}-gcc.patch
 %{?with_sdl:BuildRequires:	SDL-devel}
 BuildRequires:	gawk
 BuildRequires:	libjpeg-devel
@@ -148,6 +149,7 @@ Ten pakiet zawiera interfejs korzystajacy z biblioteki SDL.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %if %{with pcd}
 sed -e 's@#\(PCDDEF=.*\)@\1@' config.mk > config.mk.new

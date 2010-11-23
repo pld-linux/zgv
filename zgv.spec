@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_with	pcd	# with Kodak PhotoCD support
-%bcond_without	svga	# don't build svgalib version
+%bcond_with	svga	# don't build svgalib version
 %bcond_without	sdl	# don't build SDL version
 #
 Summary:	Console viewer for many graphics formats
@@ -15,7 +15,7 @@ Summary(tr.UTF-8):	Birçok resim formatını görüntüleyebilen konsol aracı
 Summary(ru.UTF-8):	Консольная программа просмотра множества графических форматов
 Name:		zgv
 Version:	5.9
-Release:	7
+Release:	8
 License:	GPL
 Group:		Applications/Graphics
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz

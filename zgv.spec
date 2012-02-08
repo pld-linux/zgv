@@ -15,7 +15,7 @@ Summary(tr.UTF-8):	Birçok resim formatını görüntüleyebilen konsol aracı
 Summary(ru.UTF-8):	Консольная программа просмотра множества графических форматов
 Name:		zgv
 Version:	5.9
-Release:	9
+Release:	10
 License:	GPL
 Group:		Applications/Graphics
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
@@ -25,6 +25,7 @@ Patch1:		%{name}-info.patch
 Patch2:		%{name}-Dkey.patch
 Patch3:		%{name}-home_etc.patch
 Patch4:		%{name}-gcc.patch
+Patch5:		%{name}-libpng15.patch
 %{?with_sdl:BuildRequires:	SDL-devel}
 BuildRequires:	gawk
 BuildRequires:	libjpeg-devel
@@ -150,6 +151,7 @@ Ten pakiet zawiera interfejs korzystajacy z biblioteki SDL.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 %if %{with pcd}
 sed -e 's@#\(PCDDEF=.*\)@\1@' config.mk > config.mk.new

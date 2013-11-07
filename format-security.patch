@@ -1,0 +1,11 @@
+--- zgv-5.9/src/font.c~	2003-04-05 19:41:51.000000000 +0200
++++ zgv-5.9/src/font.c	2013-11-07 09:30:09.329692860 +0100
+@@ -63,7 +63,7 @@
+  */
+ static void its_too_damn_picky_sometimes()
+ {
+-printf(bitmap_fonts_copyright);
++printf("%s", bitmap_fonts_copyright);
+ }
+ 
+ 

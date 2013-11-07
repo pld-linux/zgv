@@ -1,0 +1,11 @@
+--- zgv-5.9/doc/zgv.texi.orig	2013-11-07 09:31:25.396358976 +0100
++++ zgv-5.9/doc/zgv.texi	2013-11-07 09:31:40.269692201 +0100
+@@ -1526,7 +1526,7 @@
+ when mouse support is enabled can be used to move around the list.
+ 
+ @kindex S (Selector)
+-@itemx S
++@item S
+ Toggle shuffling (randomising) of slideshows. @xref{Slideshows}.
+ 
+ @kindex L (Selector)

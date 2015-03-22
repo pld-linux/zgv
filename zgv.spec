@@ -3,7 +3,7 @@
 %bcond_with	pcd	# with Kodak PhotoCD support
 %bcond_with	svga	# don't build svgalib version
 %bcond_without	sdl	# don't build SDL version
-#
+
 Summary:	Console viewer for many graphics formats
 Summary(de.UTF-8):	Konsolenbetrachter für viele Grafikformate
 Summary(es.UTF-8):	Visualizador para muchos formatos de gráficos (consola)
@@ -15,7 +15,7 @@ Summary(tr.UTF-8):	Birçok resim formatını görüntüleyebilen konsol aracı
 Summary(ru.UTF-8):	Консольная программа просмотра множества графических форматов
 Name:		zgv
 Version:	5.9
-Release:	12
+Release:	13
 License:	GPL
 Group:		Applications/Graphics
 Source0:	ftp://metalab.unc.edu/pub/Linux/apps/graphics/viewers/svga/%{name}-%{version}.tar.gz
@@ -204,10 +204,10 @@ sed -e "s@/usr/local/etc@%{_sysconfdir}@g" doc/sample.zgvrc >$RPM_BUILD_ROOT%{_s
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p	/sbin/postshell
+%post	common -p	/sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
-%postun	-p	/sbin/postshell
+%postun	common -p	/sbin/postshell
 -/usr/sbin/fix-info-dir -c %{_infodir}
 
 %if %{with svga}

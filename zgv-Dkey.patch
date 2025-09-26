@@ -1,12 +1,10 @@
-diff -ur zgv-5.2/src/zgv.c zgv-5.2.my/src/zgv.c
---- zgv-5.2/src/zgv.c	Wed Sep 27 22:49:10 2000
-+++ zgv-5.2.my/src/zgv.c	Thu May 17 22:49:30 2001
-@@ -1042,7 +1042,7 @@
-           oldstart=startfrom;	/* since we're redrawing here */
-           redrawall(curent,startfrom);
+--- zgv-5.9/src/zgv.c.orig	2005-01-20 23:54:52.000000000 +0100
++++ zgv-5.9/src/zgv.c	2025-09-26 18:42:04.944663690 +0200
+@@ -1277,6 +1277,7 @@ while(!quit)
+           if(delete_file(gifdir[curent].name,!cfg.nodelprompt,1))
+             {
+             delete_gifdir_element(curent);
++            if(curent<gifdirsiz) curent++;
+             goto do_redraw;
+             }
            }
--        break;
-+        if(curent<gifdirsiz) curent++; break;
-       case 128+'r':	/* Alt-r, rename file */
-       case 'R':		/* now also on R :-) */
-         if(rename_file(curent,startfrom))

@@ -1,8 +1,8 @@
---- zgv-5.4/doc/Makefile.orig	Mon Jul 16 02:47:50 2001
-+++ zgv-5.4/doc/Makefile	Mon Jul 16 02:48:44 2001
-@@ -36,7 +36,7 @@
- endif
+--- zgv-5.9/doc/Makefile.orig	2025-09-26 18:35:45.280053843 +0200
++++ zgv-5.9/doc/Makefile	2025-09-26 18:36:12.879904322 +0200
+@@ -46,7 +46,7 @@ endif
  	install -d $(DESTDIR)$(MANDIR) $(DESTDIR)$(INFODIR)
+ 	$(RM) $(DESTDIR)/usr/share/man/man1/zgv.1* $(DESTDIR)/usr/share/info/zgv*
  	install -m 644 zgv.1 $(DESTDIR)$(MANDIR)
 -	install -m 644 zgv zgv-? $(DESTDIR)$(INFODIR)
 +	install -m 644 zgv.info* $(DESTDIR)$(INFODIR)

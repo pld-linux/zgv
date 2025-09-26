@@ -221,7 +221,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README* TODO
 %config(noreplace,missingok) %verify(not md5 mtime size) %{_sysconfdir}/zgv.conf
 %{_mandir}/man1/zgv.1*
-%{_infodir}/*.info*
+%{_infodir}/zgv.info*
 
 %if %{with sdl}
 %files sdl

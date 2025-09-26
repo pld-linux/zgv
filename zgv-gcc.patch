@@ -9,3 +9,13 @@
          }
  
        if(event.key.keysym.sym==SDLK_SPACE && (event.key.keysym.mod&KMOD_CTRL))
+--- zgv-5.9/src/modesel.c~	2003-04-05 16:41:04.000000000 +0200
++++ zgv-5.9/src/modesel.c	2025-09-26 20:49:05.303326233 +0200
+@@ -6,6 +6,7 @@
+  */
+ 
+ #include <stdio.h>
++#include <stdlib.h>
+ #include "zgv_io.h"
+ #include "readnbkey.h"
+ #include "modesel.h"
